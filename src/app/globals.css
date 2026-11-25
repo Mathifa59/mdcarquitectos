@@ -104,6 +104,15 @@ body {
 .t-h1 {
   font-size: var(--text-h1);
 }
+/* Hero: además del ancho, limita el titular por el alto para que en laptops no choque con el header. */
+.t-h1-hero {
+  font-size: min(var(--text-h1), 12svh);
+}
+@media (max-width: 40rem) {
+  .t-h1-hero {
+    font-size: var(--text-h1);
+  }
+}
 .t-h2 {
   font-size: var(--text-h2);
 }

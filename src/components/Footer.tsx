@@ -69,7 +69,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-wrap items-end justify-between gap-6 sm:mt-24">
+        <div className="mt-16 flex flex-wrap items-end justify-between gap-6 sm:mt-24 sm:pr-16 lg:pr-20">
           <p className="text-bone/50 max-w-[40ch] text-[0.8125rem] leading-relaxed">
             © {new Date().getFullYear()} {site.legalName} · {site.name}. Todos los derechos
             reservados.

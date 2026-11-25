@@ -145,7 +145,7 @@ export function Hero({ slides }: { slides: HeroSlide[] }) {
         <p data-hero-in className="label text-bone/80 mb-6 max-w-[30rem] sm:mb-8 sm:max-w-none">
           Arquitectura comercial · Retail · Corporativa · Gastronómica
         </p>
-        <h1 className="display t-h1 max-w-[13ch]">
+        <h1 className="display t-h1-hero max-w-[13ch]">
           <WordReveal as="span" delay={0.25} className="block">
             Diseñamos espacios para experiencias únicas
           </WordReveal>
