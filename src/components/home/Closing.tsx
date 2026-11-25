@@ -8,7 +8,7 @@ export function Closing() {
   return (
     <section
       data-header-theme="dark"
-      className="bg-ink text-bone relative py-[clamp(7rem,16vw,14rem)]"
+      className="bg-ink text-bone relative pt-[clamp(7rem,16vw,14rem)] pb-[clamp(4rem,8vw,7rem)]"
     >
       <div className="shell">
         <p className="label text-bone/60 mb-10">06 / Hablemos</p>

@@ -14,7 +14,7 @@ export function WhatsAppButton() {
       rel="noopener noreferrer"
       aria-label="Escribir por WhatsApp"
       data-cursor="whatsapp"
-      className={`group border-ink/10 bg-ink text-bone hover:bg-brand fixed right-5 bottom-5 z-[60] grid size-12 place-items-center rounded-full border shadow-[0_10px_30px_-8px_rgba(14,14,14,0.55)] transition-[transform,background-color,opacity] duration-500 ease-[var(--ease-out-expo)] hover:scale-110 focus-visible:scale-110 sm:right-7 sm:bottom-7 sm:size-14 ${menuOpen ? 'pointer-events-none opacity-0' : 'opacity-100'}`}
+      className={`group border-ink/15 bg-bone text-ink hover:border-brand hover:bg-brand hover:text-bone fixed right-5 bottom-5 z-[60] grid size-12 place-items-center rounded-full border shadow-[0_0_0_4px_rgba(243,241,236,0.18),0_10px_30px_-8px_rgba(14,14,14,0.6)] transition-[transform,background-color,opacity] duration-500 ease-[var(--ease-out-expo)] hover:scale-110 focus-visible:scale-110 sm:right-7 sm:bottom-7 sm:size-14 ${menuOpen ? 'pointer-events-none opacity-0' : 'opacity-100'}`}
     >
       <WhatsAppIcon className="size-5 sm:size-6" />
     </a>

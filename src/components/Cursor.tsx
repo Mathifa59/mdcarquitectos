@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from '@/lib/gsap';
 
-type Mode = 'default' | 'link' | 'ver' | 'arrastrar';
+type Mode = 'default' | 'link' | 'ver' | 'arrastrar' | 'text';
 
 const LABELS: Partial<Record<Mode, string>> = { ver: 'Ver', arrastrar: 'Arrastrar' };
 
@@ -30,7 +30,16 @@ export function Cursor() {
 
     const apply = (next: Mode) => {
       if (next === mode) return;
+      const wasText = mode === 'text';
       mode = next;
+      // Sobre campos de texto se oculta el punto y se ve el cursor normal (I-beam).
+      if (next === 'text' || wasText) {
+        gsap.to(wrap.current, {
+          opacity: next === 'text' || !shown ? 0 : 1,
+          duration: 0.2,
+          overwrite: 'auto',
+        });
+      }
       const big = next === 'ver' || next === 'arrastrar';
       gsap.set(dot.current, { mixBlendMode: big ? 'normal' : 'difference' });
       gsap.to(dot.current, {
@@ -60,9 +69,11 @@ export function Cursor() {
       x(e.clientX);
       y(e.clientY);
     };
-    const modeOf = (el: Element | null) => {
+    const modeOf = (el: Element | null): Mode => {
+      if (el?.closest('input:not([type=hidden]),textarea')) return 'text';
       const t = el?.closest<HTMLElement>('[data-cursor],a,button');
       const v = t?.dataset.cursor;
+      if (v === 'whatsapp') return 'default'; // punto pequeño: no tapa el icono
       return v === 'ver' || v === 'arrastrar' ? v : t ? 'link' : 'default';
     };
     const over = (e: PointerEvent) => apply(modeOf(e.target as Element | null));

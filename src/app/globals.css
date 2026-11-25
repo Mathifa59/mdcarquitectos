@@ -68,6 +68,18 @@ body {
   outline-offset: 4px;
   border-radius: 2px;
 }
+/* Campos de texto: el foco se muestra con la línea inferior, no con el recuadro. */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+}
+/* Selector propio: el foco por teclado se marca con la línea inferior. */
+button[role='combobox']:focus-visible {
+  outline: none;
+  border-bottom-color: var(--color-ink);
+  box-shadow: 0 1px 0 0 var(--color-ink);
+}
 [data-theme='dark'] :focus-visible,
 .on-dark :focus-visible {
   outline-color: var(--color-bone);

@@ -18,7 +18,7 @@ export function Footer() {
 
   return (
     <footer data-header-theme="dark" className="bg-ink text-bone relative overflow-hidden">
-      <div className="shell pt-[clamp(4rem,8vw,7rem)] pb-8">
+      <div className="shell pt-[clamp(2.5rem,4vw,4rem)] pb-8">
         <Rule className="bg-bone/20" />
         <div className="grid-12 mt-12 gap-y-12 sm:mt-16">
           <div className="col-span-12 lg:col-span-5">

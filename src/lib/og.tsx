@@ -5,7 +5,8 @@ import sharp from 'sharp';
 import logo from '@/content/logo-paths.json';
 
 export const OG_SIZE = { width: 1200, height: 630 } as const;
-export const OG_TYPE = 'image/png';
+/** JPEG: el PNG de Satori pesa ~1 MB y WhatsApp descarta vistas previas de más de ~300 KB. */
+export const OG_TYPE = 'image/jpeg';
 
 const fontPath = (w: 500 | 600) =>
   path.join(
@@ -39,7 +40,7 @@ export async function renderOg({ title, label, photo, meta }: Props) {
 
   const size = title.length > 46 ? 64 : title.length > 26 ? 80 : 96;
 
-  return new ImageResponse(
+  const png = new ImageResponse(
     <div
       style={{
         width: '100%',
@@ -149,4 +150,15 @@ export async function renderOg({ title, label, photo, meta }: Props) {
       ],
     },
   );
+
+  const jpeg = await sharp(Buffer.from(await png.arrayBuffer()))
+    .flatten({ background: '#0E0E0E' })
+    .jpeg({ quality: 78, mozjpeg: true })
+    .toBuffer();
+  return new Response(new Uint8Array(jpeg), {
+    headers: {
+      'Content-Type': OG_TYPE,
+      'Cache-Control': 'public, max-age=0, must-revalidate',
+    },
+  });
 }

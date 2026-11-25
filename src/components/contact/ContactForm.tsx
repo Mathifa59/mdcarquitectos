@@ -6,11 +6,12 @@ import { sendContact } from '@/app/contacto/actions';
 import { PROJECT_TYPES, type ContactState } from '@/lib/contact';
 import { whatsappUrl } from '@/content/site';
 import { WhatsAppIcon } from '../WhatsAppIcon';
+import { Select } from './Select';
 
 const initial: ContactState = { status: 'idle' };
 
 const fieldBase =
-  'w-full border-0 border-b border-ink/25 bg-transparent px-0 py-4 text-[1.0625rem] outline-none transition-colors duration-500 placeholder:text-stone/60 focus:border-ink focus-visible:outline-none';
+  'w-full border-0 border-b border-ink/25 bg-transparent px-0 py-4 text-[1.0625rem] outline-none transition-[border-color,box-shadow] duration-500 placeholder:text-stone/60 focus:border-ink focus:shadow-[0_1px_0_0_var(--color-ink)] focus-visible:outline-none';
 
 function Submit() {
   const { pending } = useFormStatus();
@@ -159,19 +160,13 @@ export function ContactForm() {
           />
         </Field>
         <Field id="tipo" label="Tipo de proyecto" error={err.tipo}>
-          <select
+          <Select
             id="tipo"
             name="tipo"
+            options={PROJECT_TYPES}
+            placeholder="Seleccione (opcional)"
             defaultValue={v.tipo ?? ''}
-            className={`${fieldBase} appearance-none`}
-          >
-            <option value="">Seleccione (opcional)</option>
-            {PROJECT_TYPES.map((t) => (
-              <option key={t} value={t}>
-                {t}
-              </option>
-            ))}
-          </select>
+          />
         </Field>
       </div>
 

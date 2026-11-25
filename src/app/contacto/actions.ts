@@ -3,6 +3,7 @@
 import { Resend } from 'resend';
 import { site } from '@/content/site';
 import { contactSchema, type ContactState } from '@/lib/contact';
+import { consultaHtml } from '@/lib/contactEmail';
 
 const str = (v: FormDataEntryValue | null) => (typeof v === 'string' ? v : '');
 
@@ -71,6 +72,7 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
       replyTo: d.email,
       subject: `Consulta web: ${d.nombre}${d.tipo ? ` · ${d.tipo}` : ''}`,
       text,
+      html: consultaHtml(d, site.url, site.name),
     });
     if (error) throw new Error(error.message);
   } catch (e) {
