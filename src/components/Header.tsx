@@ -13,6 +13,7 @@ export function Header() {
   const { menuOpen, setMenuOpen } = useUI();
   const ref = useRef<HTMLElement>(null);
   const [dark, setDark] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef(menuOpen);
   useEffect(() => {
     menuRef.current = menuOpen;
@@ -46,6 +47,7 @@ export function Header() {
         .elementFromPoint(window.innerWidth / 2, 40)
         ?.closest<HTMLElement>('[data-header-theme]');
       setDark(under?.dataset.headerTheme === 'dark');
+      setScrolled(y > 90);
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -74,6 +76,10 @@ export function Header() {
       id="site-header"
       className={`pointer-events-none fixed inset-x-0 top-0 z-[100] transition-colors duration-500 ${light ? 'text-bone' : 'text-ink'}`}
     >
+      <span
+        aria-hidden="true"
+        className={`absolute inset-0 -z-10 backdrop-blur-md transition-opacity duration-500 ${scrolled && !menuOpen ? 'opacity-100' : 'opacity-0'} ${light ? 'bg-ink/75' : 'bg-bone/85'}`}
+      />
       <div className="shell flex h-[var(--header-h)] items-center justify-between gap-4">
         <TransitionLink
           href="/"

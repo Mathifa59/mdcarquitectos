@@ -285,3 +285,23 @@ html[data-preload='1'] .w {
     transform: none;
   }
 }
+
+/* Táctil: áreas de toque de al menos ~44 px sin cambiar el diseño (zona invisible ampliada) */
+@media (pointer: coarse) {
+  .link-draw,
+  a.label,
+  header a,
+  footer a,
+  footer button,
+  main nav a {
+    position: relative;
+  }
+  .link-draw::before,
+  a.label:not([class*='rounded-full'])::before,
+  header a::before,
+  footer a:not(.group)::before {
+    content: '';
+    position: absolute;
+    inset: -12px -8px;
+  }
+}

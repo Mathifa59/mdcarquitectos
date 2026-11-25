@@ -20,7 +20,7 @@ export function FilterBar({
     <div
       role="tablist"
       aria-label="Filtrar por categoría"
-      className={`flex flex-wrap gap-2 ${className}`}
+      className={`-mx-[var(--gutter)] flex [scrollbar-width:none] gap-2 overflow-x-auto px-[var(--gutter)] pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden ${className}`}
     >
       {options.map((o) => {
         const on = value === o.slug;
@@ -31,7 +31,7 @@ export function FilterBar({
             aria-selected={on}
             data-cursor="link"
             onClick={() => onChange(o.slug)}
-            className={`label inline-flex items-center gap-2 rounded-full border px-5 py-3 transition-colors duration-500 ${
+            className={`label inline-flex shrink-0 items-center gap-2 rounded-full border px-5 py-3.5 whitespace-nowrap transition-colors duration-500 ${
               on
                 ? dark
                   ? 'border-bone bg-bone text-ink'

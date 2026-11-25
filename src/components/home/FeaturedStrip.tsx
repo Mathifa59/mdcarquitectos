@@ -88,7 +88,7 @@ export function FeaturedStrip({ items }: { items: FeaturedItem[] }) {
         className="flex h-full snap-x snap-mandatory [scrollbar-width:none] items-stretch gap-4 overflow-x-auto px-[var(--gutter)] py-24 md:snap-none md:gap-8 md:overflow-visible md:py-0 md:pr-[8vw] [&::-webkit-scrollbar]:hidden"
       >
         {/* Panel de apertura */}
-        <div className="flex w-[78vw] shrink-0 snap-start flex-col justify-between py-0 md:w-[34vw] md:py-[14vh]">
+        <div className="flex w-[62vw] shrink-0 snap-start flex-col justify-between py-0 md:w-[34vw] md:py-[14vh]">
           <div>
             <p className="label text-bone/60">02 / Proyectos destacados</p>
             <h2 className="display t-h2 mt-6 max-w-[8ch]">Obra reciente y de siempre</h2>

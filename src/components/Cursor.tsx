@@ -46,8 +46,12 @@ export function Cursor() {
       }
     };
 
+    let lx = 0;
+    let ly = 0;
     const move = (e: PointerEvent) => {
       if (e.pointerType !== 'mouse') return;
+      lx = e.clientX;
+      ly = e.clientY;
       if (!shown) {
         shown = true;
         gsap.set(wrap.current, { x: e.clientX, y: e.clientY });
@@ -56,10 +60,21 @@ export function Cursor() {
       x(e.clientX);
       y(e.clientY);
     };
-    const over = (e: PointerEvent) => {
-      const t = (e.target as Element | null)?.closest<HTMLElement>('[data-cursor],a,button');
+    const modeOf = (el: Element | null) => {
+      const t = el?.closest<HTMLElement>('[data-cursor],a,button');
       const v = t?.dataset.cursor;
-      apply(v === 'ver' || v === 'arrastrar' ? v : t ? 'link' : 'default');
+      return v === 'ver' || v === 'arrastrar' ? v : t ? 'link' : 'default';
+    };
+    const over = (e: PointerEvent) => apply(modeOf(e.target as Element | null));
+    // Al hacer scroll con la rueda el puntero no se mueve y el navegador no avisa del cambio de elemento
+    // bajo el cursor: se recalcula para que no quede un estado ("Ver", enlace…) pegado.
+    let raf = 0;
+    const onScroll = () => {
+      if (raf || !shown) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        apply(modeOf(document.elementFromPoint(lx, ly)));
+      });
     };
     const leave = () => {
       shown = false;
@@ -67,11 +82,14 @@ export function Cursor() {
     };
 
     window.addEventListener('pointermove', move, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
     document.addEventListener('pointerover', over, { passive: true });
     document.documentElement.addEventListener('pointerleave', leave);
     return () => {
       document.documentElement.classList.remove('has-cursor');
       window.removeEventListener('pointermove', move);
+      window.removeEventListener('scroll', onScroll);
+      if (raf) cancelAnimationFrame(raf);
       document.removeEventListener('pointerover', over);
       document.documentElement.removeEventListener('pointerleave', leave);
     };
