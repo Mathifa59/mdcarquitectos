@@ -1,0 +1,13 @@
+node_modules
+.next
+.env*
+!.env.example
+.raw/
+.DS_Store
+*.tsbuildinfo
+.vercel
+
+# Notas internas de la entrega (no se publican)
+docs/
+.claude/
+*.log
