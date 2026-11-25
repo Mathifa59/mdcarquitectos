@@ -25,5 +25,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page('/estudio', 0.8),
     ...publishedTeam.map((m) => page(`/estudio/${m.slug}`, 0.6)),
     page('/contacto', 0.8, 'yearly'),
+    page('/privacidad', 0.3, 'yearly'),
   ];
 }

@@ -76,6 +76,14 @@ export function Footer() {
               reservados.
             </p>
             <p className="mt-2">
+              <TransitionLink
+                href="/privacidad"
+                data-cursor="link"
+                className="link-draw text-bone/80"
+              >
+                Política de privacidad
+              </TransitionLink>
+              {' · '}
               Desarrollado por{' '}
               <a
                 href="https://www.devhorses.com/"

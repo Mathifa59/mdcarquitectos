@@ -187,7 +187,11 @@ export function ContactForm() {
       <div className="flex flex-wrap items-center gap-6 pt-2">
         <Submit />
         <p className="text-stone max-w-[34ch] text-[0.8125rem] leading-relaxed">
-          Usaremos sus datos solo para responder su consulta.
+          Usaremos sus datos solo para responder su consulta. Al enviar acepta nuestra{' '}
+          <a href="/privacidad" className="link-draw" data-cursor="link">
+            política de privacidad
+          </a>
+          .
         </p>
       </div>
     </form>
