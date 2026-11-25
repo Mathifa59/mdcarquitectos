@@ -2062,14 +2062,26 @@
       "tier": "low"
     }
   ],
+  "team/jose-canales": [
+    {
+      "src": "/images/team/jose-canales.f51239b4.jpg",
+      "w": 960,
+      "h": 1280,
+      "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAVABADASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMEBf/EACUQAAEDAwMDBQAAAAAAAAAAAAECAxEABCESE0EFUZEGIjHB8P/EABUBAQEAAAAAAAAAAAAAAAAAAAMC/8QAGREAAgMBAAAAAAAAAAAAAAAAABEBAhIi/9oADAMBAAIRAxEAPwCm8aYcK33dOudWTIHwIHioChI3FNxtTJMGc01Tzarh9lDiHXE+4rSjAiMDvxWd1R9y3uNltRQuAXIPJyB+71Cs0JziB/pNtLvVhrEgNqMeB91nX6twuXK5LjryucDNFFKGf//Z",
+      "source": "portrait",
+      "hero": false,
+      "tier": "mid"
+    }
+  ],
   "team/mariyoli-delgado": [
     {
-      "src": "/images/team/mariyoli-delgado.jpg",
-      "w": 1170,
-      "h": 1474,
-      "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAUABADASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAECAwX/xAAlEAACAQMDAgcAAAAAAAAAAAABAgMABBEFEjETIRQyQVFhcYH/xAAWAQEBAQAAAAAAAAAAAAAAAAABAAL/xAAYEQEBAQEBAAAAAAAAAAAAAAABABExQf/aAAwDAQACEQMRAD8ANc3MjhEncs/lCzA8c8UtruUqu667kZw0wyPsVzbi6e2v4jE4BjAUkLjOQAeamxPSknjlfum4EhSSc+tGtoDLLVFB1KM+/P4TV9Ij8TPeGRmztHcH5pSg4V7f/9k=",
+      "src": "/images/team/mariyoli-delgado.552ab288.jpg",
+      "w": 1122,
+      "h": 1402,
+      "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAUABADASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAMCBAX/xAAjEAACAQMDBAMAAAAAAAAAAAABAgMABBETMUESFCGBJFFh/8QAFAEBAAAAAAAAAAAAAAAAAAAAAv/EABcRAAMBAAAAAAAAAAAAAAAAAAABEUH/2gAMAwEAAhEDEQA/AFX5N1fxRuVXqJYn7AC+PdLjMRmuoF0wEbqUjwM429Zpc03yO4tkCspLKpHB3FZhOsZZFGA7Fh+c0WnolJC2WI08cioQIFAA2JaiimE//9k=",
       "source": "portrait",
-      "hero": false
+      "hero": false,
+      "tier": "mid"
     }
   ]
 }

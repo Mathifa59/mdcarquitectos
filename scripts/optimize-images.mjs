@@ -2,6 +2,7 @@
 // corrige EXIF, limita a 2400 px, exporta a public/images y genera content/images.json.
 //   node scripts/optimize-images.mjs --review   → solo hojas de contacto en .raw/review/
 //   node scripts/optimize-images.mjs            → exporta imágenes y images.json
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
@@ -176,27 +177,39 @@ if (REVIEW) {
     );
   console.log('candidatas:', review.length);
 } else {
-  // Retrato de Mariyoli (P3) y CV (P2)
+  // Retratos del equipo (no se versionan): .raw/team/<slug>.webp|jpg|png
   const teamDir = path.join(OUT_DIR, 'team');
   fs.mkdirSync(teamDir, { recursive: true });
-  const portrait = path.join(ROOT, 'FOTOS', 'IMG_0887.JPG');
-  const dest = path.join(teamDir, 'mariyoli-delgado.jpg');
-  await sharp(portrait)
-    .rotate()
-    .resize({ width: MAX, height: MAX, fit: 'inside', withoutEnlargement: true })
-    .jpeg({ quality: 84, mozjpeg: true })
-    .toFile(dest);
-  const m = await sharp(dest).metadata();
-  result['team/mariyoli-delgado'] = [
-    {
-      src: '/images/team/mariyoli-delgado.jpg',
-      w: m.width,
-      h: m.height,
-      blur: await blur(dest),
-      source: 'portrait',
-      hero: false,
-    },
-  ];
+  const TEAM_SRC = path.resolve('.raw/team');
+  for (const old of fs.readdirSync(teamDir)) fs.rmSync(path.join(teamDir, old));
+  for (const file of fs.existsSync(TEAM_SRC) ? fs.readdirSync(TEAM_SRC) : []) {
+    const slug = path.parse(file).name;
+    // El nombre lleva un hash del contenido: al cambiar la foto cambia la URL y no queda en caché.
+    const hash = crypto
+      .createHash('sha1')
+      .update(fs.readFileSync(path.join(TEAM_SRC, file)))
+      .digest('hex')
+      .slice(0, 8);
+    const name = `${slug}.${hash}.jpg`;
+    const dest = path.join(teamDir, name);
+    await sharp(path.join(TEAM_SRC, file))
+      .rotate()
+      .resize({ width: MAX, height: MAX, fit: 'inside', withoutEnlargement: true })
+      .jpeg({ quality: 84, mozjpeg: true })
+      .toFile(dest);
+    const m = await sharp(dest).metadata();
+    result[`team/${slug}`] = [
+      {
+        src: `/images/team/${name}`,
+        w: m.width,
+        h: m.height,
+        blur: await blur(dest),
+        source: 'portrait',
+        hero: false,
+        tier: 'mid',
+      },
+    ];
+  }
   fs.mkdirSync('public/docs', { recursive: true });
   fs.copyFileSync(
     path.join(ROOT, 'Hoja de vida 2026.pdf'),

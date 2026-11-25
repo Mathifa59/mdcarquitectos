@@ -49,7 +49,7 @@ export const mariyoli: TeamMember = {
 
 /**
  * Arq. José Canales López. Fuentes: "Nuestros fundadores", PPT "CV PEPE ULT" y Word "Canales Arquitectos 2021".
- * TODO-CONFIRMAR: foto (no hay retrato; se muestra un monograma). Sin PDF de CV (solo existe el PPT).
+ * Retrato provisto por la clienta (aspecto generado con IA: sustituir por foto real cuando exista). Sin PDF de CV (solo existe el PPT).
  */
 export const jose: TeamMember = {
   slug: 'jose-canales',
@@ -57,7 +57,7 @@ export const jose: TeamMember = {
   name: 'José Canales López',
   role: 'Socio fundador',
   headline: 'Arquitectura, Urbanismo y Desarrollo Inmobiliario',
-  photo: undefined,
+  photo: 'team/jose-canales',
   initials: 'JC',
   bio: [
     'Arquitecto graduado de la Facultad de Arquitectura y Urbanismo de la Universidad Ricardo Palma, colegiado con registro CAP N.° 1145, con más de cuatro décadas de experiencia profesional.',
