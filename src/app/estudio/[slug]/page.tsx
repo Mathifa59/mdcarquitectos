@@ -8,6 +8,7 @@ import { Rule } from '@/components/Rule';
 import { SplitReveal } from '@/components/SplitReveal';
 import { TransitionLink } from '@/components/TransitionLink';
 import { ProjectGrid } from '@/components/projects/ProjectGrid';
+import { FounderStats } from '@/components/studio/FounderStats';
 import { photo } from '@/content/images';
 import { categoryLabel, sortedProjects } from '@/content/projects';
 import { site } from '@/content/site';
@@ -80,6 +81,18 @@ export default async function PerfilPage({ params }: { params: Promise<Params> }
         )}
       />
       <PageHero label={`01 / Estudio · ${m.role}`} title={m.name} lead={m.headline} />
+
+      {m.stats && (
+        <section
+          data-header-theme="dark"
+          className="bg-ink text-bone py-[clamp(4rem,8vw,7rem)]"
+          aria-label="Cifras"
+        >
+          <div className="shell">
+            <FounderStats stats={m.stats} />
+          </div>
+        </section>
+      )}
 
       <section className="bg-bone py-[clamp(5rem,10vw,9rem)]">
         <div className="shell grid-12 gap-y-14">

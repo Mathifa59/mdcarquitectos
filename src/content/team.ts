@@ -34,6 +34,15 @@ export const mariyoli: TeamMember = {
     },
     { label: 'Presencia', value: 'Perú · Colombia · Bolivia · Venezuela' },
   ],
+  // TODO-CONFIRMAR: la clienta envió "28 años · +140,000 m² · +60 proyectos · +40 marcas · 4 países".
+  // Se usan las cifras oficiales vigentes (las mismas del resto del sitio) para no contradecirlas.
+  stats: [
+    { value: 30, prefix: '+', label: 'años de experiencia profesional' },
+    { value: 160000, prefix: '+', label: 'm² desarrollados' },
+    { value: 80, prefix: '+', label: 'proyectos' },
+    { value: 70, prefix: '+', label: 'marcas nacionales e internacionales' },
+    { value: 4, label: 'países de experiencia internacional' },
+  ],
   cv: { href: '/docs/cv-mariyoli-delgado-de-rivero.pdf', label: 'Descargar CV' },
   projectCategories: ['retail', 'gastronomica', 'corporativa'],
 };
@@ -70,6 +79,13 @@ export const jose: TeamMember = {
     },
     { label: 'Experiencia', value: 'Más de cuatro décadas' },
     { label: 'Estudio', value: 'Canales Arquitectos S.A.C. · desde 2013' },
+  ],
+  stats: [
+    { value: 40, prefix: '+', label: 'años de experiencia profesional' },
+    { value: 14, label: 'premios y menciones honrosas' },
+    { value: 5, label: 'primeros puestos en concursos de arquitectura' },
+    { value: 8, label: 'buenas pro en concursos públicos' },
+    { value: '2002–2005', label: 'Decano Nacional del CAP' },
   ],
   projectCategories: ['residencial', 'educacion', 'comercial'],
   sections: [
