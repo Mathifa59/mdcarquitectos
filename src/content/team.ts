@@ -174,11 +174,27 @@ export const jose: TeamMember = {
   ],
 };
 
-export const team: TeamMember[] = [mariyoli, jose];
-export const publishedTeam = team.filter(
-  (m) => m.published && m.name && m.role && m.bio.length > 0,
-);
-export const memberBySlug = (slug: string) => publishedTeam.find((m) => m.slug === slug);
+/**
+ * Arq. Renato Canales Delgado. Retrato provisto por la clienta (2026-11-25).
+ * TODO-CONFIRMAR: falta su biografía, cifras y CV. Sin biografía solo se muestra la tarjeta (foto,
+ * nombre y cargo) en /estudio; al agregar `bio` se genera su página de perfil. Sin `cv` no hay botón.
+ */
+export const renato: TeamMember = {
+  slug: 'renato-canales-delgado',
+  published: true,
+  name: 'Renato Canales Delgado',
+  role: 'Arquitecto asociado', // TODO-CONFIRMAR: cargo
+  photo: 'team/renato-canales-delgado',
+  initials: 'RC',
+  bio: [],
+};
+
+export const team: TeamMember[] = [mariyoli, jose, renato];
+/** Quienes aparecen en la web (tarjeta en /estudio). */
+export const publishedTeam = team.filter((m) => m.published && m.name && m.role);
+/** Quienes además tienen biografía: solo ellos tienen página de perfil. */
+export const profileTeam = publishedTeam.filter((m) => m.bio.length > 0);
+export const memberBySlug = (slug: string) => profileTeam.find((m) => m.slug === slug);
 
 /** Titular y propósito tomados del CV (no son una cita textual). */
 export const mariyoliHeadline =

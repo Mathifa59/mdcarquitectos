@@ -12,7 +12,7 @@ import { FounderStats } from '@/components/studio/FounderStats';
 import { photo } from '@/content/images';
 import { categoryLabel, sortedProjects } from '@/content/projects';
 import { site } from '@/content/site';
-import { memberBySlug, publishedTeam } from '@/content/team';
+import { memberBySlug, profileTeam } from '@/content/team';
 import { breadcrumbLd, jsonLd as ld, pageMeta } from '@/lib/seo';
 
 const Closing = dynamic(() => import('@/components/home/Closing').then((m) => m.Closing));
@@ -20,7 +20,7 @@ const Closing = dynamic(() => import('@/components/home/Closing').then((m) => m.
 type Params = { slug: string };
 
 export const dynamicParams = false;
-export const generateStaticParams = () => publishedTeam.map((m) => ({ slug: m.slug }));
+export const generateStaticParams = () => profileTeam.map((m) => ({ slug: m.slug }));
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { slug } = await params;
@@ -40,7 +40,7 @@ export default async function PerfilPage({ params }: { params: Promise<Params> }
   if (!m) notFound();
 
   const portrait = m.photo ? photo(m.photo) : undefined;
-  const other = publishedTeam.find((x) => x.slug !== slug);
+  const other = profileTeam.find((x) => x.slug !== slug);
   const cats = m.projectCategories ?? [];
   const items = sortedProjects
     .filter((p) => cats.includes(p.category))

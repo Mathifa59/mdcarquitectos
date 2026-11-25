@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { projects } from '@/content/projects';
 import { services } from '@/content/services';
-import { publishedTeam } from '@/content/team';
+import { profileTeam } from '@/content/team';
 import { absoluteUrl } from '@/lib/seo';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -23,7 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page('/servicios', 0.8),
     ...services.map((s) => page(`/servicios/${s.slug}`, 0.8)),
     page('/estudio', 0.8),
-    ...publishedTeam.map((m) => page(`/estudio/${m.slug}`, 0.6)),
+    ...profileTeam.map((m) => page(`/estudio/${m.slug}`, 0.6)),
     page('/contacto', 0.8, 'yearly'),
     page('/privacidad', 0.3, 'yearly'),
   ];

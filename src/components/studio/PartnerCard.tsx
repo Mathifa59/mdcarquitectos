@@ -3,6 +3,17 @@ import { TransitionLink } from '../TransitionLink';
 import { RevealImage } from '../RevealImage';
 import type { TeamMember } from '@/content/types';
 
+/** Enlaza al perfil solo si existe; sin biografía la tarjeta es solo informativa. */
+function CardLink({ href, children }: { href?: string; children: React.ReactNode }) {
+  return href ? (
+    <TransitionLink href={href} data-cursor="ver" className="block">
+      {children}
+    </TransitionLink>
+  ) : (
+    <div>{children}</div>
+  );
+}
+
 /** Tarjeta de socio: foto (o monograma si aún no hay retrato), nombre, cargo y enlace al perfil. */
 export function PartnerCard({
   member,
@@ -13,9 +24,11 @@ export function PartnerCard({
   photo?: { src: string; blur: string };
   index: number;
 }) {
+  const hasProfile = member.bio.length > 0;
+
   return (
     <article className="group">
-      <TransitionLink href={`/estudio/${member.slug}`} data-cursor="ver" className="block">
+      <CardLink href={hasProfile ? `/estudio/${member.slug}` : undefined}>
         <RevealImage className="bg-ink-2 aspect-[4/5] w-full" delay={index * 0.12}>
           {photo ? (
             <Image
@@ -40,18 +53,20 @@ export function PartnerCard({
         </RevealImage>
         <div className="mt-6 flex items-start justify-between gap-6">
           <div>
-            <h3 className="display text-[clamp(1.75rem,1.1rem+2vw,3rem)]">{member.name}</h3>
+            <h3 className="display text-[clamp(1.75rem,1.1rem+1.5vw,2.5rem)]">{member.name}</h3>
             <p className="label text-stone mt-3">{member.role}</p>
             {member.headline && <p className="text-stone mt-2">{member.headline}</p>}
           </div>
-          <span
-            aria-hidden="true"
-            className="label mt-2 shrink-0 transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:translate-x-1"
-          >
-            Ver perfil →
-          </span>
+          {hasProfile && (
+            <span
+              aria-hidden="true"
+              className="label mt-2 shrink-0 transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:translate-x-1"
+            >
+              Ver perfil →
+            </span>
+          )}
         </div>
-      </TransitionLink>
+      </CardLink>
     </article>
   );
 }

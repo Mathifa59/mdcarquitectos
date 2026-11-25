@@ -21,7 +21,7 @@ export const metadata: Metadata = pageMeta({
   title: 'Estudio y fundadores',
   path: '/estudio',
   description:
-    'MD&C Arquitectos reúne dos trayectorias: arquitectura comercial y retail con Mariyoli Delgado y desarrollo inmobiliario con José Canales. Estudio en Lima, Perú.',
+    'MD&C Arquitectos reúne dos trayectorias: arquitectura comercial y retail con Mariyoli Delgado y desarrollo inmobiliario con José Canales, junto al arquitecto Renato Canales Delgado. Estudio en Lima, Perú.',
 });
 
 export default function EstudioPage() {
@@ -93,7 +93,7 @@ export default function EstudioPage() {
             {publishedTeam.map((m, i) => (
               <div
                 key={m.slug}
-                className={`col-span-12 md:col-span-6 ${i === 1 ? 'md:mt-24' : ''}`}
+                className={`col-span-12 md:col-span-6 lg:col-span-4 ${i === 1 ? 'md:mt-24' : ''} ${i === 2 ? 'lg:mt-48' : ''}`}
               >
                 <PartnerCard member={m} photo={m.photo ? photo(m.photo) : undefined} index={i} />
               </div>

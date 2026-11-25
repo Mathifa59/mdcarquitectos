@@ -2083,5 +2083,16 @@
       "hero": false,
       "tier": "mid"
     }
+  ],
+  "team/renato-canales-delgado": [
+    {
+      "src": "/images/team/renato-canales-delgado.ef8ae0d7.jpg",
+      "w": 1086,
+      "h": 1448,
+      "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAVABADASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAEDBf/EACEQAAEEAQUBAQEAAAAAAAAAAAECAwQRAAUSEyExQVGB/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQL/xAAZEQEBAAMBAAAAAAAAAAAAAAABABEhMkH/2gAMAwEAAhEDEQA/AI6pIjmZILhHICDW69vnn7koq+Rlwo49nZUR6P58zM1MrGpSC4gtkrspPoseY4Ml1ht5LagQsDpQsXeSj5I6xJ2SqaXX5CUqcu7Ar5knnTsbQnpIN0MMMDqt5v/Z",
+      "source": "portrait",
+      "hero": false,
+      "tier": "mid"
+    }
   ]
 }
