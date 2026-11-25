@@ -22,8 +22,8 @@ export function Cursor() {
     if (!fine) return;
     document.documentElement.classList.add('has-cursor');
 
-    const x = gsap.quickTo(wrap.current, 'x', { duration: reduced ? 0 : 0.35, ease: 'power3.out' });
-    const y = gsap.quickTo(wrap.current, 'y', { duration: reduced ? 0 : 0.35, ease: 'power3.out' });
+    const x = gsap.quickTo(wrap.current, 'x', { duration: reduced ? 0 : 0.25, ease: 'power3.out' });
+    const y = gsap.quickTo(wrap.current, 'y', { duration: reduced ? 0 : 0.25, ease: 'power3.out' });
     gsap.set(wrap.current, { xPercent: -50, yPercent: -50, opacity: 0 });
     let shown = false;
     let mode: Mode = 'default';
