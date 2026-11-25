@@ -2,7 +2,7 @@ import path from 'node:path';
 import type { NextConfig } from 'next';
 import { legacyProjectRedirects } from './src/content/redirects';
 
-const SITE = 'https://mdc-arquitectos.com';
+const SITE = 'https://www.mdc-arquitectos.com';
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,

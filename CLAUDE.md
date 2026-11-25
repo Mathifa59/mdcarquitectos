@@ -1,6 +1,6 @@
 # MD&C Arquitectos · contexto para continuar el trabajo
 
-Sitio institucional de **MD&C Arquitectos** (Medios de Diseño y Construcción S.A.C.), Lima. Next.js (App Router) + TypeScript + Tailwind v4 + GSAP/Lenis. Dominio: `https://mdc-arquitectos.com`. Idioma: español (`es-PE`).
+Sitio institucional de **MD&C Arquitectos** (Medios de Diseño y Construcción S.A.C.), Lima. Next.js (App Router) + TypeScript + Tailwind v4 + GSAP/Lenis. Dominio: `https://www.mdc-arquitectos.com`. Idioma: español (`es-PE`).
 
 ## Estado
 Fases 0–6 completas: auditoría, base, imágenes y contenido, home, proyectos, estudio/servicios/contacto, y pulido (SEO, OG, 404, redirecciones 301, rendimiento). Lighthouse móvil: Accesibilidad/Buenas prácticas/SEO 100, Rendimiento 85–100. **Lo que sigue lo hace el dueño del proyecto: despliegue en Vercel, dominio y Resend.**

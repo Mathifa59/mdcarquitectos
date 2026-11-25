@@ -4,7 +4,7 @@ Sitio institucional de **MD&C Arquitectos** (Medios de Diseño y Construcción S
 
 - **Stack:** Next.js (App Router) + TypeScript · Tailwind CSS v4 · GSAP (ScrollTrigger, SplitText, Draggable, Inertia) + Lenis · Resend + zod para el formulario.
 - **Idioma:** español (`es-PE`). El contenido está separado en `src/content/` para añadir inglés más adelante.
-- **Dominio:** `https://mdc-arquitectos.com` (definido en `src/content/site.ts`).
+- **Dominio:** `https://www.mdc-arquitectos.com` (definido en `src/content/site.ts`).
 
 ## Requisitos
 

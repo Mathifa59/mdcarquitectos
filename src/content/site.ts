@@ -2,7 +2,7 @@
 export const site = {
   name: 'MD&C Arquitectos',
   legalName: 'Medios de Diseño y Construcción S.A.C.',
-  url: 'https://mdc-arquitectos.com',
+  url: 'https://www.mdc-arquitectos.com',
   tagline: 'Arquitectura comercial · Retail · Corporativa · Gastronómica',
   whatsapp: {
     number: '51986622055',
