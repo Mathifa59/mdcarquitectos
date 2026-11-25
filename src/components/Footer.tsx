@@ -70,10 +70,24 @@ export function Footer() {
         </div>
 
         <div className="mt-16 flex flex-wrap items-end justify-between gap-6 sm:mt-24 sm:pr-16 lg:pr-20">
-          <p className="text-bone/50 max-w-[40ch] text-[0.8125rem] leading-relaxed">
-            © {new Date().getFullYear()} {site.legalName} · {site.name}. Todos los derechos
-            reservados.
-          </p>
+          <div className="text-bone/50 max-w-[40ch] text-[0.8125rem] leading-relaxed">
+            <p>
+              © {new Date().getFullYear()} {site.legalName} · {site.name}. Todos los derechos
+              reservados.
+            </p>
+            <p className="mt-2">
+              Desarrollado por{' '}
+              <a
+                href="https://www.devhorses.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor="link"
+                className="link-draw text-bone/80"
+              >
+                devhorses
+              </a>
+            </p>
+          </div>
           <button
             type="button"
             onClick={toTop}
