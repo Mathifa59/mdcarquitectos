@@ -100,6 +100,8 @@ export type TeamMember = {
   projectCategories?: CategorySlug[];
   /** Título de la sección de proyectos del perfil (por defecto "Proyectos de {nombre}"). */
   projectsTitle?: string;
+  /** Qué proyectos se listan en el perfil: los de MD&C (sin `office`) o los de Canales Arquitectos (con `office`). */
+  projectsBy?: 'mdc' | 'canales';
   /** Cifras destacadas del perfil. `value` numérico se anima; texto se muestra tal cual. */
   stats?: { value: number | string; prefix?: string; label: string }[];
   /** Marcas y clientes principales (texto corrido). */

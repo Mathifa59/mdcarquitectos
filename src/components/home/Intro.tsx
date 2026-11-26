@@ -1,7 +1,7 @@
 import { TransitionLink } from '../TransitionLink';
 import { Rule } from '../Rule';
 import { SplitReveal } from '../SplitReveal';
-import { about, intro } from '@/content/studio';
+import { about } from '@/content/studio';
 
 /** Intro del estudio con los textos institucionales de la clienta. */
 export function Intro() {
@@ -20,7 +20,10 @@ export function Intro() {
             <div className="mt-12 grid gap-8 sm:mt-16 sm:grid-cols-2">
               <p className="t-lead text-ink/85 max-w-[30ch]">{about.lead}</p>
               <div>
-                <p className="text-stone max-w-[46ch]">{intro.paragraphs[0]}</p>
+                <div className="text-stone max-w-[46ch] space-y-5">
+                  <p>{about.paragraphs[2]}</p>
+                  <p>{about.paragraphs[3]}</p>
+                </div>
                 <TransitionLink
                   href="/estudio"
                   data-cursor="link"

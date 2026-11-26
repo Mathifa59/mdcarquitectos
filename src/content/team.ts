@@ -44,9 +44,9 @@ export const mariyoli: TeamMember = {
     { value: 4, label: 'países de experiencia internacional' },
   ],
   cv: { href: '/docs/cv-mariyoli-delgado-de-rivero.pdf', label: 'Descargar CV' },
-  // 2026-11-26: la clienta pidió mostrar solo "Proyectos Retail" en su perfil.
-  projectsTitle: 'Proyectos Retail',
-  projectCategories: ['retail'],
+  // La clienta encontró confuso "Proyectos Retail" (parecía una categoría): ahora se listan por estudio autor.
+  projectsTitle: 'Proyectos de Mariyoli',
+  projectsBy: 'mdc',
 };
 
 /**
@@ -89,7 +89,8 @@ export const jose: TeamMember = {
     { value: 8, label: 'buenas pro en concursos públicos' },
     { value: '2002–2005', label: 'Decano Nacional del CAP' },
   ],
-  projectCategories: ['residencial', 'educacion', 'comercial'],
+  projectsTitle: 'Proyectos de José',
+  projectsBy: 'canales',
   sections: [
     {
       title: 'Cargos y trayectoria gremial',

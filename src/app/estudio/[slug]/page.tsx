@@ -43,7 +43,9 @@ export default async function PerfilPage({ params }: { params: Promise<Params> }
   const other = profileTeam.find((x) => x.slug !== slug);
   const cats = m.projectCategories ?? [];
   const items = sortedProjects
-    .filter((p) => cats.includes(p.category))
+    .filter((p) =>
+      m.projectsBy ? (m.projectsBy === 'canales') === Boolean(p.office) : cats.includes(p.category),
+    )
     .slice(0, 6)
     .map((p) => {
       const ph = photo(p.slug)!;
@@ -196,7 +198,7 @@ export default async function PerfilPage({ params }: { params: Promise<Params> }
                 </SplitReveal>
               </h2>
               <TransitionLink
-                href={`/proyectos?categoria=${cats[0]}`}
+                href={cats[0] ? `/proyectos?categoria=${cats[0]}` : '/proyectos'}
                 data-cursor="link"
                 className="label link-draw pb-1"
               >
