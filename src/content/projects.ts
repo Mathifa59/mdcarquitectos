@@ -75,7 +75,6 @@ const mdcProjects: Project[] = [
     areaM2: 800,
     year: '2016',
     scope: [IMPL],
-    featured: true,
     order: 3,
   },
   {
@@ -148,6 +147,7 @@ const mdcProjects: Project[] = [
     areaM2: 504.15,
     year: '2018–2019',
     scope: [IMPL],
+    featured: true,
     order: 9,
   },
   {
@@ -239,6 +239,7 @@ const mdcProjects: Project[] = [
     areaM2: 83.8,
     year: '2016',
     scope: [CONCEPT, LF, 'Desarrollo del proyecto', FLAG, IMPL],
+    featured: true,
     order: 17,
   },
   {
@@ -276,6 +277,7 @@ const mdcProjects: Project[] = [
     areaM2: 91.3,
     year: '2015',
     scope: ['Diseño conceptual (Look & Feel)', 'Ejecución de obra'],
+    featured: true,
     order: 20,
   },
   {
@@ -352,6 +354,7 @@ const mdcProjects: Project[] = [
       { name: 'C.C. Real Plaza Cajamarca', areaM2: 198.9, year: '2013' },
       { name: 'C.C. Jockey Plaza, Lima', areaM2: 231.1, year: '2013' },
     ],
+    featured: true,
     order: 26,
   },
   {
