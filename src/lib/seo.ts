@@ -39,6 +39,7 @@ export const organizationLd = () => ({
       availableLanguage: ['es'],
     },
   ],
+  sameAs: site.social.map((s) => s.href),
   areaServed: ['PE', 'CO', 'BO', 'VE'].map((c) => ({ '@type': 'Country', name: c })),
   founder: [mariyoli, jose].map((m) => ({
     '@type': 'Person',

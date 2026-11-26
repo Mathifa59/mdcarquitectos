@@ -65,6 +65,20 @@ export function Footer() {
                   <WhatsAppIcon className="size-4" /> {site.whatsapp.display}
                 </a>
               </p>
+              <p className="flex flex-wrap gap-x-6 gap-y-2 pt-2">
+                {site.social.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-cursor="link"
+                    className="link-draw"
+                  >
+                    {s.label}
+                  </a>
+                ))}
+              </p>
             </address>
           </div>
         </div>

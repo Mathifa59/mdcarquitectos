@@ -19,8 +19,12 @@ export const site = {
   },
   // TODO-CONFIRMAR: correo aún no verificado por la clienta
   email: 'contacto@mdc-arquitectos.com',
-  // TODO-CONFIRMAR: sin redes oficiales todavía; no se muestran íconos.
-  social: [] as { label: string; href: string }[],
+  // Redes oficiales entregadas por la clienta (2026-11-26).
+  social: [
+    { label: 'Instagram', href: 'https://www.instagram.com/mdcarquitectos/' },
+    { label: 'Facebook', href: 'https://www.facebook.com/mdcarquitecturacomercial' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/mdc-arquitectura-comercial/' },
+  ] as { label: string; href: string }[],
   stats: [
     { value: 30, prefix: '+', label: 'años de experiencia' },
     { value: 80, prefix: '+', label: 'proyectos' },

@@ -112,7 +112,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 'Tienda Indian Chic en Real Plaza Puruchuco',
               ),
               pv(photo('team/mariyoli-delgado'), 'Mariyoli Delgado de Rivero'),
-              pv(photo('oficinas-porta', 1), 'Recepción de las oficinas Porta'),
+              pv(photo('oficinas-porta'), 'Oficinas Porta'),
             ]}
           />
           <main id="site-main">{children}</main>
