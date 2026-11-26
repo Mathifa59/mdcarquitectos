@@ -45,7 +45,7 @@ export const mariyoli: TeamMember = {
   ],
   cv: { href: '/docs/cv-mariyoli-delgado-de-rivero.pdf', label: 'Descargar CV' },
   // La clienta encontró confuso "Proyectos Retail" (parecía una categoría): ahora se listan por estudio autor.
-  projectsTitle: 'Proyectos de Mariyoli',
+  projectsTitle: 'Proyectos de MD&C',
   projectsBy: 'mdc',
 };
 
@@ -89,7 +89,7 @@ export const jose: TeamMember = {
     { value: 8, label: 'buenas pro en concursos públicos' },
     { value: '2002–2005', label: 'Decano Nacional del CAP' },
   ],
-  projectsTitle: 'Proyectos de José',
+  projectsTitle: 'Proyectos de Canales Arquitectos',
   projectsBy: 'canales',
   sections: [
     {
