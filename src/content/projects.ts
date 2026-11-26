@@ -514,7 +514,31 @@ export const projects: Project[] = [...mdcProjects, ...canalesProjects];
 
 export const projectBySlug = (slug: string) => projects.find((p) => p.slug === slug);
 
-export const sortedProjects = [...projects].sort((a, b) => a.order - b.order);
+/**
+ * Orden del portafolio: primero los proyectos de MD&C y luego los de Canales Arquitectos; dentro de
+ * cada grupo, por categoría y con los proyectos de una misma marca juntos (Topitop, Porta, Indian…),
+ * respetando el orden manual (`order`) para decidir qué categoría y qué marca van primero.
+ */
+const firstOrder = (key: (p: Project) => string) => {
+  const map = new Map<string, number>();
+  for (const p of [...projects].sort((a, b) => a.order - b.order)) {
+    const k = key(p);
+    if (!map.has(k)) map.set(k, p.order);
+  }
+  return map;
+};
+const categoryRank = firstOrder((p) => `${p.office ? 1 : 0}|${p.category}`);
+const brandRank = firstOrder((p) => `${p.office ? 1 : 0}|${p.category}|${p.client ?? p.slug}`);
+
+export const sortedProjects = [...projects].sort(
+  (a, b) =>
+    Number(Boolean(a.office)) - Number(Boolean(b.office)) ||
+    categoryRank.get(`${a.office ? 1 : 0}|${a.category}`)! -
+      categoryRank.get(`${b.office ? 1 : 0}|${b.category}`)! ||
+    brandRank.get(`${a.office ? 1 : 0}|${a.category}|${a.client ?? a.slug}`)! -
+      brandRank.get(`${b.office ? 1 : 0}|${b.category}|${b.client ?? b.slug}`)! ||
+    a.order - b.order,
+);
 export const featuredProjects = sortedProjects.filter((p) => p.featured);
 
 export const categoryPhrase = (slug: Project['category']) =>
