@@ -17,9 +17,9 @@
   --text-label: 0.6875rem;
   --text-body: clamp(1rem, 0.94rem + 0.3vw, 1.1875rem);
   --text-lead: clamp(1.25rem, 1.05rem + 1vw, 1.875rem);
-  --text-h3: clamp(1.75rem, 1.2rem + 2.4vw, 3.5rem);
-  --text-h2: clamp(2.5rem, 1.4rem + 5vw, 6.5rem);
-  --text-h1: clamp(3.25rem, 1.2rem + 9vw, 11rem);
+  --text-h3: clamp(1.6rem, 1.15rem + 2vw, 3rem);
+  --text-h2: clamp(2.25rem, 1.3rem + 4vw, 5.25rem);
+  --text-h1: clamp(2.75rem, 1.1rem + 7vw, 8.5rem);
 
   --ease-mdc: cubic-bezier(0.76, 0, 0.24, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -118,7 +118,7 @@ button[role='combobox']:focus-visible {
 }
 /* Hero: además del ancho, limita el titular por el alto para que en laptops no choque con el header. */
 .t-h1-hero {
-  font-size: min(var(--text-h1), 12svh);
+  font-size: min(var(--text-h1), 10.5svh);
 }
 @media (max-width: 40rem) {
   .t-h1-hero {

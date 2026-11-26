@@ -98,6 +98,8 @@ export type TeamMember = {
   sections?: { title: string; items: { text: string; note?: string }[] }[];
   /** Categorías de proyectos a destacar en el perfil. */
   projectCategories?: CategorySlug[];
+  /** Título de la sección de proyectos del perfil (por defecto "Proyectos de {nombre}"). */
+  projectsTitle?: string;
   /** Cifras destacadas del perfil. `value` numérico se anima; texto se muestra tal cual. */
   stats?: { value: number | string; prefix?: string; label: string }[];
   /** Marcas y clientes principales (texto corrido). */

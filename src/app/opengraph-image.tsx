@@ -10,7 +10,7 @@ export default async function Image() {
   return renderOg({
     title: slogan.replace(/\.$/, ''),
     label: 'MD&C Arquitectos · Lima, Perú',
-    photo: heroPhoto('topitop-mega-plaza')?.src,
+    photo: heroPhoto('hero/indian-puruchuco')?.src,
     meta: 'Arquitectura comercial · Retail · Corporativa · Gastronómica',
   });
 }

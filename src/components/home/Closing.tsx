@@ -12,7 +12,7 @@ export function Closing() {
     >
       <div className="shell">
         <p className="label text-bone/60 mb-10">06 / Hablemos</p>
-        <h2 className="display max-w-[14ch] text-[clamp(3rem,1rem+8.6vw,10.5rem)]">
+        <h2 className="display max-w-[14ch] text-[clamp(2.6rem,1rem+6.6vw,8rem)]">
           <SplitReveal as="span" className="block">
             {closingPhrases[0]}
           </SplitReveal>

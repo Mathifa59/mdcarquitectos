@@ -36,7 +36,8 @@ export const intro = {
 
 export const about = {
   title: 'Quiénes somos',
-  lead: 'Dos trayectorias, una visión compartida y el compromiso de transformar espacios en experiencias extraordinarias.',
+  // 2026-11-26: la clienta pidió que la introducción presente a la firma como resultado de la fusión de dos empresas.
+  lead: 'Somos el resultado de la fusión de dos empresas: dos trayectorias, una visión compartida y el compromiso de transformar espacios en experiencias extraordinarias.',
   paragraphs: [
     'MD&C ARQUITECTOS nace de la fusión estratégica de dos empresas con una sólida trayectoria en el sector de la arquitectura y la construcción, uniendo experiencia, creatividad y conocimiento especializado.',
     // TODO-CONFIRMAR: "educación," parece una errata; texto textual de la clienta.

@@ -12,7 +12,7 @@ export function Logo({
   compact?: boolean;
   className?: string;
 }) {
-  const h = compact ? 690 : paths.h;
+  const h = compact ? paths.compactH : paths.h;
   return (
     <svg
       className={`logo ${className ?? ''}`}

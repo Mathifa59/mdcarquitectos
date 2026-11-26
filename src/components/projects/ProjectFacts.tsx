@@ -50,7 +50,7 @@ export function ProjectFacts({
               <div className="grid grid-cols-2 gap-6">
                 {areaM2 && (
                   <div>
-                    <p className="display text-[clamp(2.75rem,1rem+6.4vw,8rem)] tabular-nums">
+                    <p className="display text-[clamp(2.4rem,1rem+5.2vw,6.5rem)] tabular-nums">
                       {formatArea(areaM2)}
                       <span className="ml-1 text-[0.4em]">m²</span>
                     </p>
@@ -59,7 +59,7 @@ export function ProjectFacts({
                 )}
                 {year && (
                   <div>
-                    <p className="display text-[clamp(2.75rem,1rem+6.4vw,8rem)] tabular-nums">
+                    <p className="display text-[clamp(2.4rem,1rem+5.2vw,6.5rem)] tabular-nums">
                       {year}
                     </p>
                     <p className="label text-stone mt-3">Año</p>

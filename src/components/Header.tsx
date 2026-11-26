@@ -85,7 +85,7 @@ export function Header() {
           href="/"
           aria-label="MD&C Arquitectos, inicio"
           data-cursor="link"
-          className="pointer-events-auto block w-[4.75rem] sm:w-24"
+          className="pointer-events-auto block w-[7rem] sm:w-[9.5rem]"
         >
           <Logo tone={light ? 'onDark' : 'color'} compact />
         </TransitionLink>

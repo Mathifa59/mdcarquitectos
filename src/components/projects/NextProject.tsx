@@ -78,7 +78,7 @@ export function NextProject({ slug, title, meta, photo, full }: Props) {
 
       <div data-title className="shell absolute inset-x-0 bottom-0 z-10 pb-[max(2.5rem,8svh)]">
         <p className="label text-bone/75 mb-4">{meta}</p>
-        <h2 className="display max-w-[14ch] text-[clamp(3rem,1rem+8vw,10rem)]">{title}</h2>
+        <h2 className="display max-w-[14ch] text-[clamp(2.6rem,1rem+6.4vw,8rem)]">{title}</h2>
         <p
           className={`label mt-8 transition-opacity duration-700 ${ready ? 'opacity-100' : 'opacity-0'}`}
         >

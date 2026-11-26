@@ -34,15 +34,16 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  const heroSlugs = [
-    'topitop-mega-plaza',
-    'indian-chic-real-plaza-puruchuco',
-    'oficinas-porta',
-    'indian-chic-mall-aventura-santa-anita',
+  // Fotos de portada (generadas con scripts/build-hero.mjs): fachadas y locales simples y reconocibles.
+  const heroSlides = [
+    { key: 'indian-puruchuco', slug: 'indian-chic-real-plaza-puruchuco' },
+    { key: 'porta-freedom', slug: 'porta-freedom' },
+    { key: 'indian-santa-anita', slug: 'indian-chic-mall-aventura-santa-anita' },
+    { key: 'explorer', slug: 'explorer' },
   ];
-  const slides: HeroSlide[] = heroSlugs.map((slug) => {
+  const slides: HeroSlide[] = heroSlides.map(({ key, slug }) => {
     const p = projectBySlug(slug)!;
-    const ph = heroPhoto(slug)!;
+    const ph = heroPhoto(`hero/${key}`)!;
     return {
       src: ph.src,
       blur: ph.blur,

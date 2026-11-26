@@ -153,7 +153,7 @@ export function MenuOverlay({ previews }: { previews: MenuPreview[] }) {
                       {String(i + 1).padStart(2, '0')}
                     </span>
                     <span data-line className="line-mask">
-                      <span className="display block text-[clamp(2.75rem,1rem+8vw,8.5rem)] transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:translate-x-3 group-focus-visible:translate-x-3">
+                      <span className="display block text-[clamp(2.4rem,1rem+6.4vw,7rem)] transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:translate-x-3 group-focus-visible:translate-x-3">
                         {item.label}
                       </span>
                     </span>

@@ -31,7 +31,7 @@ for (const p of projects) {
   for (const f of ph) if (!fs.existsSync('public' + f.src)) errors.push(`falta archivo: ${f.src}`);
 }
 for (const k of Object.keys(images))
-  if (!k.startsWith('team/') && !slugs.has(k)) errors.push(`images.json sobrante: ${k}`);
+  if (!k.startsWith('team/') && !k.startsWith('hero/') && !slugs.has(k)) errors.push(`images.json sobrante: ${k}`);
 for (const s of services) {
   if (!slugs.has(s.cover.project) || !images[s.cover.project]?.[s.cover.index])
     errors.push(`portada inválida: ${s.slug}`);

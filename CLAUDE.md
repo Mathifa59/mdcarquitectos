@@ -15,6 +15,12 @@ Hecho después de la fase 6:
 - **Equipo**: 3 arquitectos en `/estudio` (Mariyoli, José, Renato Canales Delgado). Renato es "Arquitecto asociado" con tarjeta sin perfil porque aún no hay biografía; al llenar `bio` en `team.ts` se crea su perfil (`profileTeam`), y si añades `cv` aparece el botón.
 - **UI**: titular del hero limitado por alto (`.t-h1-hero`, laptops), botón de WhatsApp claro (visible sobre fondo oscuro, rojo al hover), footer con "Volver arriba" sin chocar con WhatsApp y menos espacio sobre él, seguimiento del cursor 0,25 s.
 
+Cambios pedidos por la clienta (2026-11-26):
+- **Portada**: fotos nuevas (Indian Puruchuco, Porta, Indian Santa Anita, Explorer) generadas con `node scripts/build-hero.mjs` (no necesita `.raw/`; escribe `public/images/hero/` y las claves `hero/*` de `images.json`) y listadas en `heroSlides` de `src/app/page.tsx`. La imagen OG de inicio usa `hero/indian-puruchuco`.
+- **Tipografía** más chica: escala `--text-h1/h2/h3` en `globals.css` y los titulares con `clamp` propio (Closing, NextProject, MenuOverlay, ProjectFacts, ProjectHero).
+- **Logo**: "&" más grande y de trazo fino (glifo de Inter Tight 200 convertido a trazado), `C` desplazada y viewBox nuevo en `logo-paths.json` (`compactH` = alto sin "ARQUITECTOS"); logo del header más grande.
+- **Textos**: el lead de "Quiénes somos" presenta la firma como fusión de dos empresas; el perfil de Mariyoli muestra solo "Proyectos Retail" (`projectsTitle` + `projectCategories` en `team.ts`).
+
 ## Cómo arrancar
 ```bash
 nvm use            # Node ≥ 20.19 (ver .nvmrc)

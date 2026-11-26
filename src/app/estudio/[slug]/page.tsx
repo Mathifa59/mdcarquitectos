@@ -192,7 +192,7 @@ export default async function PerfilPage({ params }: { params: Promise<Params> }
             <div className="mt-10 mb-12 flex flex-wrap items-end justify-between gap-6 sm:mb-16">
               <h2 className="display t-h3 max-w-[14ch]">
                 <SplitReveal as="span" className="block">
-                  {`Proyectos de ${m.name.split(' ')[0]}`}
+                  {m.projectsTitle ?? `Proyectos de ${m.name.split(' ')[0]}`}
                 </SplitReveal>
               </h2>
               <TransitionLink

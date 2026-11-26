@@ -44,7 +44,9 @@ export const mariyoli: TeamMember = {
     { value: 4, label: 'países de experiencia internacional' },
   ],
   cv: { href: '/docs/cv-mariyoli-delgado-de-rivero.pdf', label: 'Descargar CV' },
-  projectCategories: ['retail', 'gastronomica', 'corporativa'],
+  // 2026-11-26: la clienta pidió mostrar solo "Proyectos Retail" en su perfil.
+  projectsTitle: 'Proyectos Retail',
+  projectCategories: ['retail'],
 };
 
 /**

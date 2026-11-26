@@ -118,7 +118,7 @@ export function ProjectHero({ title, categoryLabel, location, year, photo, immer
             ← Proyectos
           </TransitionLink>
           <div className="mt-16 lg:mt-0">
-            <h1 className="display text-[clamp(3rem,1.2rem+7.4vw,9rem)]">
+            <h1 className="display text-[clamp(2.6rem,1.1rem+6vw,7.25rem)]">
               <WordReveal as="span" delay={0.2} className="block">
                 {title}
               </WordReveal>

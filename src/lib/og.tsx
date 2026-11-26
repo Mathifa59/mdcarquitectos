@@ -93,7 +93,7 @@ export async function renderOg({ title, label, photo, meta }: Props) {
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <svg width="150" height="52" viewBox={`0 0 ${logo.w} 690`}>
+          <svg width="190" height="54" viewBox={`0 0 ${logo.w} ${logo.compactH}`}>
             <path d={logo.md} fill="#E01B1B" />
             <path d={logo.amp} fill="#8C8C8C" />
             <path d={logo.c} fill="#F3F1EC" />
