@@ -2,15 +2,16 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { gsap, EASE } from '@/lib/gsap';
+import { usePathname } from 'next/navigation';
 import { Logo } from './Logo';
 import { TransitionLink } from './TransitionLink';
 import { useUI } from './UIProvider';
-import { WhatsAppIcon } from './WhatsAppIcon';
-import { whatsappUrl } from '@/content/site';
+import { nav } from '@/content/site';
 
 /** Header mínimo: logo, Menú y WhatsApp. Se oculta al bajar y reaparece al subir. */
 export function Header() {
   const { menuOpen, setMenuOpen } = useUI();
+  const pathname = usePathname();
   const ref = useRef<HTMLElement>(null);
   const [dark, setDark] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -43,8 +44,10 @@ export function Header() {
       }
       if (Math.abs(dy) > 0.5) last = y;
       // Tema según el fondo que hay bajo el header.
+      // Fondo bajo el header: se ignora el propio header (el menú ocupa el centro).
       const under = document
-        .elementFromPoint(window.innerWidth / 2, 40)
+        .elementsFromPoint(window.innerWidth / 2, 40)
+        .find((el) => !el.closest('#site-header'))
         ?.closest<HTMLElement>('[data-header-theme]');
       setDark(under?.dataset.headerTheme === 'dark');
       setScrolled(y > 90);
@@ -90,24 +93,41 @@ export function Header() {
           <Logo tone={light ? 'onDark' : 'color'} compact />
         </TransitionLink>
 
+        <nav
+          aria-label="Principal"
+          className="pointer-events-auto hidden items-center gap-7 lg:flex"
+        >
+          {nav.map((n) => {
+            const active = n.href === '/' ? pathname === '/' : pathname.startsWith(n.href);
+            return (
+              <TransitionLink
+                key={n.href}
+                href={n.href}
+                data-cursor="link"
+                aria-current={active ? 'page' : undefined}
+                className={`text-[0.875rem] font-medium tracking-[-0.005em] transition-opacity duration-300 hover:opacity-100 ${active ? 'decoration-1 underline-offset-[10px] opacity-100 [text-decoration:underline]' : 'opacity-75'}`}
+              >
+                {n.label}
+              </TransitionLink>
+            );
+          })}
+        </nav>
+
         <div className="pointer-events-auto flex items-center gap-2 sm:gap-3">
-          <a
-            href={whatsappUrl()}
-            target="_blank"
-            rel="noopener noreferrer"
+          <TransitionLink
+            href="/contacto"
             data-cursor="link"
-            className={`label hover:border-brand hover:bg-brand hover:text-bone hidden items-center gap-2 rounded-full border px-4 py-3 transition-colors duration-500 sm:inline-flex ${border}`}
+            className={`label hover:border-graphite hover:bg-graphite hover:text-bone hidden items-center gap-2 rounded-full border px-5 py-3 transition-colors duration-500 lg:inline-flex ${border}`}
           >
-            <WhatsAppIcon className="size-3.5" />
-            WhatsApp
-          </a>
+            Conversemos <span aria-hidden="true">↗</span>
+          </TransitionLink>
           <button
             type="button"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-expanded={menuOpen}
             aria-controls="site-menu"
             data-cursor="link"
-            className={`label hover:border-brand hover:bg-brand hover:text-bone inline-flex h-11 min-w-[6.5rem] items-center justify-center gap-3 overflow-hidden rounded-full border px-5 transition-colors duration-500 ${border}`}
+            className={`label hover:border-graphite hover:bg-graphite hover:text-bone inline-flex h-11 min-w-[6.5rem] items-center justify-center gap-3 overflow-hidden rounded-full border px-5 transition-colors duration-500 lg:hidden ${border}`}
           >
             <span className="grid h-[1.4em] overflow-hidden text-center">
               <span

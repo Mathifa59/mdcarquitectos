@@ -131,3 +131,78 @@ export const services: Service[] = [
 ];
 
 export const serviceBySlug = (slug: string) => services.find((s) => s.slug === slug);
+
+/**
+ * Las ocho especialidades de servicio (directrices 2026-11-26), con los textos definitivos de la clienta.
+ * `detail` enlaza a la página de servicio ya existente (3 líneas con subservicios); el resto se presenta
+ * en /servicios con ancla propia. `category` lleva al portafolio filtrado; `tipo` preselecciona el formulario.
+ */
+export type ServiceCard = {
+  id: string;
+  title: string;
+  text: string;
+  detail?: string;
+  category?:
+    'retail' | 'inmobiliario' | 'corporativa' | 'residencial' | 'gastronomica' | 'educacion';
+  tipo: string;
+};
+
+export const serviceCatalog: ServiceCard[] = [
+  {
+    id: 'arquitectura-comercial-retail',
+    title: 'Arquitectura comercial y retail',
+    text: 'Diseñamos espacios que fortalecen la identidad de las marcas y mejoran la experiencia de compra. Desarrollamos conceptos, distribución comercial, store planning, visual merchandising, diseño de tiendas, showrooms e implementación.',
+    detail: 'arquitectura-retail',
+    category: 'retail',
+    tipo: 'Retail',
+  },
+  {
+    id: 'desarrollo-inmobiliario-urbanismo',
+    title: 'Desarrollo inmobiliario y urbanismo',
+    text: 'Evaluamos el potencial de terrenos y desarrollamos propuestas de arquitectura para conjuntos habitacionales, multifamiliares, condominios y habilitaciones urbanas. Integramos estudios de cabida, factibilidad y criterios de eficiencia y valor inmobiliario.',
+    category: 'inmobiliario',
+    tipo: 'Inmobiliario',
+  },
+  {
+    id: 'arquitectura-corporativa',
+    title: 'Arquitectura corporativa',
+    text: 'Diseñamos oficinas, sedes empresariales y espacios de trabajo que expresan la cultura de cada organización y responden a sus necesidades de operación.',
+    detail: 'arquitectura-corporativa',
+    category: 'corporativa',
+    tipo: 'Corporativo',
+  },
+  {
+    id: 'arquitectura-residencial',
+    title: 'Arquitectura residencial',
+    text: 'Proyectamos viviendas, casas de playa y condominios con especial atención al confort, la relación con el entorno y la calidad espacial.',
+    category: 'residencial',
+    tipo: 'Residencial',
+  },
+  {
+    id: 'arquitectura-gastronomica',
+    title: 'Arquitectura gastronómica',
+    text: 'Creamos espacios para restaurantes, cafeterías y cadenas gastronómicas, integrando identidad de marca, experiencia del cliente, flujos y requerimientos operativos.',
+    detail: 'arquitectura-gastronomica',
+    category: 'gastronomica',
+    tipo: 'Gastronómico',
+  },
+  {
+    id: 'arquitectura-educativa-institucional',
+    title: 'Arquitectura educativa e institucional',
+    text: 'Desarrollamos proyectos para instituciones educativas y organizaciones, considerando funcionalidad, flexibilidad, accesibilidad y necesidades de sus usuarios.',
+    category: 'educacion',
+    tipo: 'Educativo',
+  },
+  {
+    id: 'consultoria-gerencia-proyectos',
+    title: 'Consultoría y gerencia de proyectos',
+    text: 'Asesoramos en la definición del alcance, estudios preliminares, coordinación de especialidades, planificación, presupuestos, cronogramas y supervisión.',
+    tipo: 'Otro',
+  },
+  {
+    id: 'construccion-implementacion',
+    title: 'Construcción e implementación',
+    text: 'Ejecutamos remodelaciones, acondicionamientos e implementaciones con coordinación de equipos, control de calidad y seguimiento del presupuesto y del cronograma. Ofrecemos entregas llave en mano cuando el contrato lo contempla.',
+    tipo: 'Otro',
+  },
+];

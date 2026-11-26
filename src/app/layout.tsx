@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter_Tight, Instrument_Serif } from 'next/font/google';
+import { Manrope } from 'next/font/google';
 import './globals.css';
 import { site } from '@/content/site';
 import { jsonLd, organizationLd } from '@/lib/seo';
@@ -13,37 +13,32 @@ import { Footer } from '@/components/Footer';
 import { Preloader } from '@/components/Preloader';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 
-const sans = Inter_Tight({
+const sans = Manrope({
   subsets: ['latin'],
-  variable: '--font-inter-tight',
-  display: 'swap',
-});
-const serif = Instrument_Serif({
-  subsets: ['latin'],
-  weight: '400',
-  style: ['normal', 'italic'],
-  variable: '--font-instrument-serif',
+  variable: '--font-manrope',
   display: 'swap',
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} | Arquitectura comercial en Lima`,
+    default: `${site.name} | Arquitectura comercial y desarrollo inmobiliario en Lima`,
     template: `%s | ${site.name}`,
   },
   description:
-    'Estudio limeño de arquitectura comercial: retail, corporativa y gastronómica. Más de 30 años creando espacios para experiencias únicas en Perú, Colombia, Bolivia y Venezuela.',
+    'Firma de arquitectura, consultoría y construcción. Proyectos comerciales, corporativos, residenciales e inmobiliarios desde el concepto hasta la entrega.',
   applicationName: site.name,
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,
   publisher: site.legalName,
   keywords: [
     'arquitectura comercial',
+    'desarrollo inmobiliario',
     'arquitectura retail',
     'arquitectura corporativa',
-    'arquitectura gastronómica',
-    'diseño de tiendas',
+    'arquitectura residencial',
+    'consultoría y gerencia de proyectos',
+    'construcción',
     'estudio de arquitectura Lima',
     'MD&C Arquitectos',
   ],
@@ -58,20 +53,20 @@ export const metadata: Metadata = {
     locale: 'es_PE',
     siteName: site.name,
     url: site.url,
-    title: `${site.name} | Arquitectura comercial en Lima`,
+    title: `${site.name} | Arquitectura comercial y desarrollo inmobiliario en Lima`,
     description:
-      'Ideas que construyen espacios extraordinarios. Arquitectura retail, corporativa y gastronómica.',
+      'Ideas que construyen espacios extraordinarios. Arquitectura comercial y desarrollo inmobiliario: dos trayectorias, una visión compartida.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${site.name} | Arquitectura comercial en Lima`,
+    title: `${site.name} | Arquitectura comercial y desarrollo inmobiliario en Lima`,
     description:
-      'Ideas que construyen espacios extraordinarios. Arquitectura retail, corporativa y gastronómica.',
+      'Ideas que construyen espacios extraordinarios. Arquitectura comercial y desarrollo inmobiliario: dos trayectorias, una visión compartida.',
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: '#F3F1EC',
+  themeColor: '#F8F7F4',
   width: 'device-width',
   initialScale: 1,
 };
@@ -80,7 +75,7 @@ const pv = (p: ReturnType<typeof photo>, alt: string) => ({ src: p!.src, blur: p
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es-PE" className={`${sans.variable} ${serif.variable}`} suppressHydrationWarning>
+    <html lang="es-PE" className={sans.variable} suppressHydrationWarning>
       <head>
         {/* Marca la primera visita del home antes de pintar, para que el preloader no parpadee. */}
         <script
@@ -106,13 +101,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Header />
           <MenuOverlay
             previews={[
-              pv(heroPhoto('topitop-mega-plaza'), 'Tienda Topitop en Mega Plaza'),
-              pv(
-                heroPhoto('indian-chic-real-plaza-puruchuco'),
-                'Tienda Indian Chic en Real Plaza Puruchuco',
-              ),
-              pv(photo('team/mariyoli-delgado'), 'Mariyoli Delgado de Rivero'),
+              pv(heroPhoto('hero/indian-puruchuco'), 'Tienda Indian Chic en Real Plaza Puruchuco'),
               pv(photo('oficinas-porta'), 'Oficinas Porta'),
+              pv(heroPhoto('topitop-mega-plaza'), 'Tienda Topitop en Mega Plaza'),
+              pv(heroPhoto('residencial-los-ciruelos'), 'Conjunto Residencial Los Ciruelos'),
+              pv(photo('porta-freedom'), 'Tienda Porta Freedom'),
+              pv(heroPhoto('kfc-tello-42'), 'Local KFC de Tello 42'),
             ]}
           />
           <main id="site-main">{children}</main>

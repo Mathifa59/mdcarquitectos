@@ -2,21 +2,23 @@ import type { TeamMember } from './types';
 
 /**
  * Textos de "Nuestros fundadores" entregados por la clienta (2026-11-25).
- * TODO-CONFIRMAR: el texto original decía "más de 60 proyectos, 140,000 m² y 40 marcas"; se usan las
- * cifras oficiales vigentes (+80 proyectos, +160 000 m², +70 marcas) para no contradecir el resto del sitio.
+ * Directrices 2026-11-26: Mariyoli = 28 años de experiencia; no se publican cifras de proyectos, m² ni marcas
+ * hasta validarlas con la clienta (la clienta envió 60/140 000/40 y el sitio tenía 80/160 000/70).
  */
 export const mariyoli: TeamMember = {
   slug: 'mariyoli-delgado',
   published: true,
   name: 'Mariyoli Delgado de Rivero',
   role: 'Socia fundadora',
-  headline: 'Arquitectura Comercial, Retail y Gestión de Proyectos',
+  headline: 'Arquitectura comercial y gestión de proyectos',
+  summary:
+    'Arquitecta de interiores, egresada de la Universidad Orval, fundadora de MDC Arquitectos. Con 28 años de experiencia profesional, dirige proyectos comerciales, retail, corporativos y de interiorismo. Su especialización integra estrategia de marca, diseño, planificación comercial, implementación y gestión de obras. Ha trabajado con marcas nacionales e internacionales en Perú, Colombia, Bolivia y Venezuela.',
   photo: 'team/mariyoli-delgado',
   initials: 'MD',
   bio: [
     'Arquitecta de Interiores egresada de la Universidad Orval, fundadora y gerente general de Medios de Diseño y Construcción S.A.C. – MDC Arquitectos.',
     'Cuenta con una amplia trayectoria profesional en arquitectura comercial, retail, Store Planning, Visual Merchandising, diseño de interiores e implementación de espacios comerciales y corporativos.',
-    'A lo largo de su carrera ha liderado más de 80 proyectos, superando los 160 000 m² desarrollados y trabajando con más de 70 marcas nacionales e internacionales en Perú, Colombia, Bolivia y Venezuela.',
+    'A lo largo de su carrera ha trabajado con marcas nacionales e internacionales en Perú, Colombia, Bolivia y Venezuela.',
     'Su experiencia comprende el desarrollo de tiendas, restaurantes, showrooms, oficinas corporativas, centros de salud y viviendas, integrando el diseño arquitectónico con la estrategia comercial y la rentabilidad del negocio.',
     'Especialista en la gestión integral de proyectos, lidera equipos multidisciplinarios desde la conceptualización y el desarrollo técnico hasta la ejecución, supervisión y entrega final de las obras.',
     'En MD&C ARQUITECTOS lidera el área de arquitectura comercial, retail, diseño de interiores e implementación de proyectos, ofreciendo soluciones que fortalecen la identidad de las marcas, optimizan la inversión y mejoran la experiencia del consumidor.',
@@ -27,20 +29,16 @@ export const mariyoli: TeamMember = {
   },
   facts: [
     { label: 'Formación', value: 'Arquitecta de Interiores, Universidad Orval' }, // TODO-CONFIRMAR: nombre oficial
-    { label: 'Experiencia', value: 'Más de 30 años' },
+    { label: 'Experiencia', value: '28 años' },
     {
       label: 'Especialidades',
       value: 'Store Planning · Visual Merchandising · Gestión integral de proyectos',
     },
     { label: 'Presencia', value: 'Perú · Colombia · Bolivia · Venezuela' },
   ],
-  // TODO-CONFIRMAR: la clienta envió "28 años · +140,000 m² · +60 proyectos · +40 marcas · 4 países".
-  // Se usan las cifras oficiales vigentes (las mismas del resto del sitio) para no contradecirlas.
+  // Cifras de proyectos, m² y marcas ocultas hasta validarlas (directrices 2026-11-26).
   stats: [
-    { value: 30, prefix: '+', label: 'años de experiencia profesional' },
-    { value: 160000, prefix: '+', label: 'm² desarrollados' },
-    { value: 80, prefix: '+', label: 'proyectos' },
-    { value: 70, prefix: '+', label: 'marcas nacionales e internacionales' },
+    { value: 28, label: 'años de experiencia profesional' },
     { value: 4, label: 'países de experiencia internacional' },
   ],
   cv: { href: '/docs/cv-mariyoli-delgado-de-rivero.pdf', label: 'Descargar CV' },
@@ -58,7 +56,9 @@ export const jose: TeamMember = {
   published: true,
   name: 'José Canales López',
   role: 'Socio fundador',
-  headline: 'Arquitectura, Urbanismo y Desarrollo Inmobiliario',
+  headline: 'Arquitectura, urbanismo y desarrollo inmobiliario',
+  summary:
+    'Arquitecto por la Universidad Ricardo Palma, CAP N.° 1145, fundador de Canales Arquitectos. Cuenta con más de cuatro décadas de trayectoria en vivienda multifamiliar, conjuntos habitacionales, urbanismo y edificios empresariales e institucionales. Exdecano nacional del Colegio de Arquitectos del Perú (2002–2005). Su experiencia incluye concursos de arquitectura, planificación y evaluación de proyectos inmobiliarios.',
   photo: 'team/jose-canales',
   initials: 'JC',
   bio: [
@@ -187,6 +187,7 @@ export const renato: TeamMember = {
   published: true,
   name: 'Renato Canales Delgado',
   role: 'Arquitecto asociado', // TODO-CONFIRMAR: cargo
+  summary: 'Integra el equipo profesional de MD&C Arquitectos.',
   photo: 'team/renato-canales-delgado',
   initials: 'RC',
   bio: [],

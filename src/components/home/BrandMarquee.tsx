@@ -4,7 +4,7 @@ export function BrandMarquee({ brands }: { brands: readonly string[] }) {
     <ul className="flex shrink-0 items-center" aria-hidden="true">
       {brands.map((b) => (
         <li key={b} className="flex items-center">
-          <span className="display px-[clamp(1.25rem,3vw,3.5rem)] text-[clamp(2.25rem,1rem+4.4vw,5.5rem)] whitespace-nowrap">
+          <span className="display px-[clamp(1.25rem,3vw,3.5rem)] text-[clamp(1.5rem,1rem+1.8vw,2.75rem)] whitespace-nowrap">
             {b}
           </span>
           <span className="bg-brand block size-2 rotate-45" />
@@ -16,7 +16,7 @@ export function BrandMarquee({ brands }: { brands: readonly string[] }) {
     <section
       id="marcas"
       aria-label="Marcas con las que hemos trabajado"
-      className="marquee border-ink/15 bg-bone relative overflow-hidden border-y py-10 sm:py-14"
+      className="marquee border-ink/15 bg-bone relative overflow-hidden border-y py-8 sm:py-10"
     >
       <p className="sr-only">Marcas: {brands.join(', ')}.</p>
       <div

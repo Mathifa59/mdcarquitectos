@@ -41,7 +41,7 @@ export function PageHero({
         className={`shell relative z-10 flex flex-col justify-end pt-[calc(var(--header-h)+4rem)] pb-[clamp(3rem,7vw,6rem)] ${tall ? 'min-h-[100svh]' : 'min-h-[78svh]'}`}
       >
         <p className="label text-bone/70 mb-8">{label}</p>
-        <h1 className="display t-h1 max-w-[12ch]">
+        <h1 className="display t-h1 max-w-[20ch]">
           <WordReveal as="span" delay={0.15} className="block">
             {title}
           </WordReveal>

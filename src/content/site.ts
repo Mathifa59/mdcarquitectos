@@ -3,7 +3,7 @@ export const site = {
   name: 'MD&C Arquitectos',
   legalName: 'Medios de Diseño y Construcción S.A.C.',
   url: 'https://www.mdc-arquitectos.com',
-  tagline: 'Arquitectura comercial · Retail · Corporativa · Gastronómica',
+  tagline: 'Arquitectura · Consultoría · Construcción',
   whatsapp: {
     number: '51986622055',
     display: '+51 986 622 055',
@@ -19,18 +19,31 @@ export const site = {
   },
   // TODO-CONFIRMAR: correo aún no verificado por la clienta
   email: 'contacto@mdc-arquitectos.com',
+  /**
+   * Contacto por área (directrices 2026-11-26). `email` de José: la clienta pidió josecanales@; el buzón
+   * real en Yachay es jose.canales@, así que josecanales@ debe existir como alias/reenviador.
+   */
+  contacts: {
+    comercial: {
+      label: 'Arquitectura comercial',
+      person: 'Mariyoli Delgado de Rivero',
+      email: 'mariyolidelgado@mdc-arquitectos.com',
+      phone: { number: '51986622055', display: '+51 986 622 055' },
+    },
+    inmobiliario: {
+      label: 'Desarrollo inmobiliario',
+      person: 'José Canales López',
+      email: 'josecanales@mdc-arquitectos.com',
+      phone: { number: '51992777828', display: '+51 992 777 828' },
+    },
+  },
   // Redes oficiales entregadas por la clienta (2026-11-26).
   social: [
     { label: 'Instagram', href: 'https://www.instagram.com/mdcarquitectos/' },
     { label: 'Facebook', href: 'https://www.facebook.com/mdcarquitecturacomercial' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/company/mdc-arquitectura-comercial/' },
   ] as { label: string; href: string }[],
-  stats: [
-    { value: 30, prefix: '+', label: 'años de experiencia' },
-    { value: 80, prefix: '+', label: 'proyectos' },
-    { value: 160000, prefix: '+', label: 'm² construidos' },
-    { value: 70, prefix: '+', label: 'marcas' },
-  ],
+  // Cifras globales (+30 años, +80 proyectos, m², marcas) ocultas hasta validarlas con la clienta (directrices 2026-11-26).
   countries: ['Perú', 'Colombia', 'Bolivia', 'Venezuela'],
 } as const;
 
@@ -41,12 +54,20 @@ export const closingPhrases = [
   'Diseñamos el lugar donde su marca cobra vida',
 ] as const;
 
-export const whatsappUrl = (message: string = site.whatsapp.message) =>
-  `https://wa.me/${site.whatsapp.number}?text=${encodeURIComponent(message)}`;
+export const whatsappUrl = (
+  message: string = site.whatsapp.message,
+  number: string = site.whatsapp.number,
+) => `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 
 export const nav = [
-  { href: '/proyectos', label: 'Proyectos', caption: 'Retail, corporativa y gastronómica' },
+  { href: '/', label: 'Inicio', caption: 'Dos trayectorias, una visión compartida' },
+  { href: '/estudio', label: 'El estudio', caption: 'Fundadores y equipo' },
   { href: '/servicios', label: 'Servicios', caption: 'De la idea a la entrega llave en mano' },
-  { href: '/estudio', label: 'Estudio', caption: 'Más de 30 años creando espacios' },
-  { href: '/contacto', label: 'Contacto', caption: 'Conversemos sobre su proyecto' },
+  { href: '/proyectos', label: 'Proyectos', caption: 'Comercial, inmobiliario y más' },
+  {
+    href: '/clientes',
+    label: 'Clientes',
+    caption: 'La confianza que construye nuestra trayectoria',
+  },
+  { href: '/contacto', label: 'Contacto', caption: 'Hablemos de su proyecto' },
 ] as const;

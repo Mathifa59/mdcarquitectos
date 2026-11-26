@@ -1,5 +1,6 @@
 'use client';
 
+import { useSearchParams } from 'next/navigation';
 import { useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { sendContact } from '@/app/contacto/actions';
@@ -20,7 +21,7 @@ function Submit() {
       type="submit"
       disabled={pending}
       data-cursor="link"
-      className="label group bg-ink text-bone hover:bg-brand relative inline-flex items-center gap-4 overflow-hidden rounded-full px-9 py-5 transition-colors duration-500 disabled:cursor-wait disabled:opacity-70"
+      className="label group bg-ink text-bone hover:bg-graphite relative inline-flex items-center gap-4 overflow-hidden rounded-full px-9 py-5 transition-colors duration-500 disabled:cursor-wait disabled:opacity-70"
     >
       {pending ? 'Enviando…' : 'Enviar mensaje'}
       <span
@@ -51,7 +52,7 @@ function Field({
       </label>
       {children}
       {error && (
-        <p id={`${id}-error`} role="alert" className="text-brand mt-2 text-[0.9rem]">
+        <p id={`${id}-error`} role="alert" className="text-danger mt-2 text-[0.9rem]">
           {error}
         </p>
       )}
@@ -63,6 +64,11 @@ function Field({
 export function ContactForm() {
   const [state, action] = useActionState(sendContact, initial);
   const v = state.values ?? {};
+  // Enlaces desde servicios y fichas de proyecto preseleccionan el tipo (?tipo=Retail).
+  const tipoParam = useSearchParams().get('tipo');
+  const tipoInicial = (PROJECT_TYPES as readonly string[]).includes(tipoParam ?? '')
+    ? tipoParam!
+    : '';
   const err = state.errors ?? {};
 
   if (state.status === 'success') {
@@ -111,7 +117,7 @@ export function ContactForm() {
 
       <div id="form-status" aria-live="polite">
         {state.status === 'error' && state.message && (
-          <p role="alert" className="border-brand text-brand border-l-2 pl-4 text-[1rem]">
+          <p role="alert" className="border-danger text-danger border-l-2 pl-4 text-[1rem]">
             {state.message}
           </p>
         )}
@@ -130,6 +136,19 @@ export function ContactForm() {
             aria-describedby={err.nombre ? 'nombre-error' : undefined}
             className={fieldBase}
             placeholder="Su nombre"
+          />
+        </Field>
+        <Field id="empresa" label="Empresa" error={err.empresa}>
+          <input
+            id="empresa"
+            name="empresa"
+            type="text"
+            autoComplete="organization"
+            defaultValue={v.empresa}
+            aria-invalid={Boolean(err.empresa)}
+            aria-describedby={err.empresa ? 'empresa-error' : undefined}
+            className={fieldBase}
+            placeholder="Opcional"
           />
         </Field>
         <Field id="email" label="Correo *" error={err.email}>
@@ -165,7 +184,19 @@ export function ContactForm() {
             name="tipo"
             options={PROJECT_TYPES}
             placeholder="Seleccione (opcional)"
-            defaultValue={v.tipo ?? ''}
+            defaultValue={v.tipo ?? tipoInicial}
+          />
+        </Field>
+        <Field id="ubicacion" label="Ubicación" error={err.ubicacion}>
+          <input
+            id="ubicacion"
+            name="ubicacion"
+            type="text"
+            defaultValue={v.ubicacion}
+            aria-invalid={Boolean(err.ubicacion)}
+            aria-describedby={err.ubicacion ? 'ubicacion-error' : undefined}
+            className={fieldBase}
+            placeholder="Ciudad o distrito (opcional)"
           />
         </Field>
       </div>
@@ -184,15 +215,35 @@ export function ContactForm() {
         />
       </Field>
 
+      <div>
+        <label className="flex cursor-pointer items-start gap-3 text-[0.9375rem] leading-snug">
+          <input
+            type="checkbox"
+            name="consent"
+            required
+            defaultChecked={v.consent === 'on'}
+            aria-invalid={Boolean(err.consent)}
+            aria-describedby={err.consent ? 'consent-error' : undefined}
+            data-cursor="link"
+            className="accent-ink mt-0.5 size-4 shrink-0"
+          />
+          <span>
+            He leído y acepto la{' '}
+            <a href="/privacidad" target="_blank" className="link-draw" data-cursor="link">
+              política de privacidad
+            </a>
+            . Usaremos mis datos solo para responder esta consulta. *
+          </span>
+        </label>
+        {err.consent && (
+          <p id="consent-error" role="alert" className="text-danger mt-2 text-[0.9rem]">
+            {err.consent}
+          </p>
+        )}
+      </div>
+
       <div className="flex flex-wrap items-center gap-6 pt-2">
         <Submit />
-        <p className="text-stone max-w-[34ch] text-[0.8125rem] leading-relaxed">
-          Usaremos sus datos solo para responder su consulta. Al enviar acepta nuestra{' '}
-          <a href="/privacidad" className="link-draw" data-cursor="link">
-            política de privacidad
-          </a>
-          .
-        </p>
       </div>
     </form>
   );

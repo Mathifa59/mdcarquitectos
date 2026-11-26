@@ -19,7 +19,7 @@ export function PagePlaceholder({
         <div className="shell">
           <p className="label text-bone/60 mb-6">{label}</p>
           <h1 className="display t-h1 max-w-[12ch]">{title}</h1>
-          <p className="label text-brand-bright mt-10">En construcción · {phase}</p>
+          <p className="label text-topo mt-10">En construcción · {phase}</p>
         </div>
       </section>
       <section className="shell grid min-h-[120svh] content-start gap-10 py-32">

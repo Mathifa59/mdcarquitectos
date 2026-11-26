@@ -148,12 +148,12 @@ export function MenuOverlay({ previews }: { previews: MenuPreview[] }) {
                   >
                     <span
                       data-fade
-                      className="label text-bone/50 group-hover:text-brand-bright w-8 shrink-0 transition-colors duration-500 sm:w-12"
+                      className="label text-bone/50 group-hover:text-topo w-8 shrink-0 transition-colors duration-500 sm:w-12"
                     >
                       {String(i + 1).padStart(2, '0')}
                     </span>
                     <span data-line className="line-mask">
-                      <span className="display block text-[clamp(2.4rem,1rem+6.4vw,7rem)] transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:translate-x-3 group-focus-visible:translate-x-3">
+                      <span className="display block text-[clamp(2rem,0.9rem+4.2vw,4.5rem)] transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:translate-x-3 group-focus-visible:translate-x-3">
                         {item.label}
                       </span>
                     </span>

@@ -115,7 +115,7 @@ export function Lightbox({
           ref={closeBtn}
           onClick={onClose}
           data-cursor="link"
-          className="label border-bone/30 hover:border-brand hover:bg-brand rounded-full border px-5 py-3 transition-colors duration-500"
+          className="label border-bone/30 hover:border-graphite hover:bg-graphite rounded-full border px-5 py-3 transition-colors duration-500"
         >
           Cerrar ✕
         </button>

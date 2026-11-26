@@ -44,7 +44,7 @@ export function Cursor() {
       gsap.set(dot.current, { mixBlendMode: big ? 'normal' : 'difference' });
       gsap.to(dot.current, {
         scale: big ? 1 : next === 'link' ? 0.42 : 0.14,
-        backgroundColor: big ? '#990101' : '#ffffff',
+        backgroundColor: big ? '#8a8177' : '#ffffff',
         duration: 0.5,
         ease: 'expo.out',
         overwrite: 'auto',
@@ -70,7 +70,7 @@ export function Cursor() {
       y(e.clientY);
     };
     const modeOf = (el: Element | null): Mode => {
-      if (el?.closest('input:not([type=hidden]),textarea')) return 'text';
+      if (el?.closest('input:not([type=hidden],[type=checkbox]),textarea')) return 'text';
       const t = el?.closest<HTMLElement>('[data-cursor],a,button');
       const v = t?.dataset.cursor;
       if (v === 'whatsapp') return 'default'; // punto pequeño: no tapa el icono
@@ -117,7 +117,7 @@ export function Cursor() {
         className="grid size-[5.5rem] scale-[0.14] place-items-center rounded-full bg-white mix-blend-difference will-change-transform"
         style={{ transform: 'scale(0.14)' }}
       >
-        <span ref={label} className="label text-bone text-[0.625rem] opacity-0" />
+        <span ref={label} className="label text-ink text-[0.625rem] opacity-0" />
       </div>
     </div>
   );

@@ -1,6 +1,8 @@
 import { Rule } from '../Rule';
 import { SplitReveal } from '../SplitReveal';
 import { formatArea, joinList, lowerFirst } from '@/lib/format';
+import { TransitionLink } from '../TransitionLink';
+import { TIPO_BY_CATEGORY } from '@/lib/contact';
 import type { Project } from '@/content/types';
 
 /** "Datos del proyecto": cifras grandes, ficha y un texto breve armado solo con datos reales. */
@@ -16,7 +18,7 @@ export function ProjectFacts({
   const { client, location, areaM2, year, scope, sites, office, extra, description } = project;
 
   const rows = [
-    ['Estudio', office],
+    ['Estudio de origen', office ?? 'MD&C Arquitectos'],
     ['Cliente', client],
     ['Categoría', categoryLabel],
     ['Ubicación', location],
@@ -78,6 +80,23 @@ export function ProjectFacts({
                   </div>
                 ))}
             </dl>
+
+            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+              <TransitionLink
+                href={`/proyectos?categoria=${project.category}`}
+                data-cursor="link"
+                className="label link-draw pb-1"
+              >
+                Ver proyectos relacionados
+              </TransitionLink>
+              <TransitionLink
+                href={`/contacto?tipo=${encodeURIComponent(TIPO_BY_CATEGORY[project.category] ?? 'Otro')}`}
+                data-cursor="link"
+                className="label link-draw pb-1"
+              >
+                Consultar por un proyecto similar ↗
+              </TransitionLink>
+            </div>
 
             {sites && sites.length > 0 && (
               <div className="mt-10">

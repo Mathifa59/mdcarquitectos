@@ -3,12 +3,25 @@
 Sitio institucional de **MD&C Arquitectos** (Medios de Diseño y Construcción S.A.C.), Lima. Next.js (App Router) + TypeScript + Tailwind v4 + GSAP/Lenis. Dominio: `https://www.mdc-arquitectos.com`. Idioma: español (`es-PE`). Desarrollo por devhorses (crédito en el footer).
 
 ## Estado (2026-11-26)
+**Rediseño según las directrices de la clienta** (`MDC_Directrices_Finales_Devhorses.docx` + maqueta HTML, 2026-11-26), aplicado sobre `main`. **La versión anterior está en la rama `version-actual-2026-11-26`** (diseño Inter Tight/Instrument Serif, paleta roja, portada rotativa): para volver a ella, `git checkout version-actual-2026-11-26`.
+- **Visual**: paleta de la clienta (`--color-ink #191919`, `bone #F8F7F4`, `bone-2 #DEDAD4`, `topo #8A8177`, `graphite #4B4B4B`; el rojo solo queda en el logo; errores con `danger`), tipografía **Manrope** (sin serif), escala H1 36–72 px, `.shell` de 1320 px.
+- **Navegación**: Inicio / El estudio / Servicios / Proyectos / Clientes (nueva, `/clientes`) / Contacto, con botón "Conversemos". Menú visible en escritorio y overlay en móvil. `nav` en `site.ts`.
+- **Inicio** (`app/page.tsx`, textos en `content/home.ts`): portada con dos imágenes iguales (Indian Chic Puruchuco + Los Ciruelos, sin carrusel), estudio, 2 áreas de negocio, 8 destacados intercalados (`homeFeaturedSlugs`), dirección (fundadores iguales + Renato en "Equipo profesional") y franja de clientes, cierre.
+- **El estudio**: texto institucional de 3 párrafos (`content/studio.ts`); fundadores a igual escala y Renato aparte.
+- **Servicios**: 8 especialidades (`serviceCatalog` en `services.ts`) con CTA "Solicitar una consulta" (`/contacto?tipo=…`), enlace a las 3 fichas existentes y a proyectos relacionados.
+- **Proyectos**: 6 categorías (Retail, Inmobiliario y urbanismo, Corporativo, Residencial, Gastronómico, Educativo e institucional); "Comercial y empresarial" se redistribuyó (los 64 proyectos y sus URL se conservan); filtro adicional por estudio (MD&C / Canales); fichas con "Estudio de origen", "Ver proyectos relacionados" y "Consultar por un proyecto similar". Indian Chic Puruchuco es el primero del portafolio.
+- **Contacto**: formulario con empresa, ubicación y consentimiento de privacidad obligatorio; correo HTML enruta por área (CC a `mariyolidelgado@` para Retail/Corporativo/Gastronómico y a `josecanales@` para Inmobiliario/Residencial/Educativo). Pie con WhatsApp por área (`site.contacts`).
+- **Cifras**: Mariyoli = **28 años**; las cifras globales (+30 años, +80 proyectos, m², marcas) están **ocultas** hasta validarlas (la clienta lo pide en las directrices). No sumar años de ambas empresas.
+- **SEO**: título de inicio "MD&C Arquitectos | Arquitectura comercial y desarrollo inmobiliario en Lima"; `/clientes` en el sitemap.
+- Se eliminaron los componentes antiguos del inicio (Hero rotativo, Intro, ServicesSection, Stats, FeaturedStrip, MariyoliBlock).
+
+Lo siguiente describe el estado previo al rediseño (se conserva como referencia):
 **El sitio está en producción** y el formulario de contacto funciona de punta a punta. Fases 0–6 completas (auditoría, base, imágenes y contenido, home, proyectos, estudio/servicios/contacto, pulido SEO/OG/404/redirecciones/rendimiento). Lighthouse móvil: Accesibilidad/Buenas prácticas/SEO 100, Rendimiento 85–100.
 
 Hecho después de la fase 6:
 - **Despliegue**: proyecto `mdcarquectos` en Vercel (plan Hobby), conectado al repo `Mathifa59/mdcarquitectos` (rama `main`; cada push redespliega solo).
 - **Dominio** (DNS en Yachay, zona `mdc-arquitectos.com`): `A @ → 216.198.79.1` (Vercel), `CNAME www → …vercel-dns-017.com`, `A mail → 161.132.57.24` (servidor de correo), `MX 0 mail.mdc-arquitectos.com`, SPF intacto (`TXT v=spf1 …`), más TXT de verificación de Google Search Console y los registros de Resend (`resend._domainkey`, `rsend`, `send`, `_dmarc`). Vercel redirige el dominio sin `www` a `www` (308); **el dominio canónico es `www`** (`site.ts`, `next.config.ts`). El MX no apunta al nombre raíz a propósito: el A raíz va a Vercel, no al correo.
-- **Correo corporativo** (Yachay, plan Buzón 10, 10/10 usados): `mariyolidelgado@` (sin punto), `jose.canales@`, `renato.canales@`, `administracion@`, `proyectos@`, `contabilidad@`, `r1obra@`, `r2obra@`, `r3obra@`, `contacto@`. Conexión Outlook por IMAP: `mail.mdc-arquitectos.com`, 993 SSL/TLS; SMTP 465 SSL/TLS.
+- **Correo corporativo** (Yachay, plan Buzón 10, 10/10 usados): `mariyolidelgado@` (sin punto), `jose.canales@` (**la clienta publica `josecanales@`: crear ese alias/reenviador en Yachay hacia `jose.canales@`; el plan Buzón 10 está lleno, así que debe ser un reenviador**), `renato.canales@`, `administracion@`, `proyectos@`, `contabilidad@`, `r1obra@`, `r2obra@`, `r3obra@`, `contacto@`. Conexión Outlook por IMAP: `mail.mdc-arquitectos.com`, 993 SSL/TLS; SMTP 465 SSL/TLS.
 - **Formulario**: Server Action (`src/app/contacto/actions.ts`) + Resend. Variables en Vercel (Production): `RESEND_API_KEY`, `CONTACT_TO_EMAIL` (= `contacto@mdc-arquitectos.com`), `CONTACT_FROM_EMAIL` (`MD&C Arquitectos <web@mdc-arquitectos.com>`). Dominio verificado en Resend (solo envío; **no** activar "Receiving", rompería el MX). Correo HTML con formato en `src/lib/contactEmail.ts` (con versión de texto y HTML escapado). Selector propio accesible en `components/contact/Select.tsx`; foco de campos con línea inferior (sin recuadro) y cursor normal sobre campos de texto.
 - **Open Graph**: la imagen se genera como **JPEG** (~90 KB) en `src/lib/og.tsx`; el PNG original pesaba 1 MB y WhatsApp lo descartaba. WhatsApp cachea: probar con `?v=2`.
 - **Política de privacidad** en `/privacidad` (Ley 29733; sin cookies de seguimiento ni analítica), enlazada en footer y formulario. Texto con criterio general: **falta revisión legal**.
@@ -68,3 +81,12 @@ npm run dev
 
 ## Archivos locales que NO están en el repo (a propósito)
 `.raw/` (materiales fuente), `docs/` (notas internas de auditoría), `.env.local` (claves), `.claude/` (configuración local). Si trabajas en otro equipo y necesitas regenerar imágenes, copia la carpeta de originales (se sincroniza por OneDrive) y define `CURATED_DIR` si usas la selección curada. Las variables de producción viven en Vercel, no en el repo.
+
+## Pendientes del rediseño (2026-11-26)
+13. **`josecanales@mdc-arquitectos.com`** está publicado pero no existe: crear reenviador en Yachay (Email Forwarders) o los correos de consultas inmobiliarias rebotarán.
+14. **Logo**: las directrices piden el logo oficial sin redibujar; el sitio usa la versión con "&" grande y fina pedida antes. Pendiente decidir (el original está en el historial de git).
+15. **Fotos originales** en alta resolución: Oficinas Porta, Centro Empresarial Altavista (hoy 768×1024), Cibertec SJL, Topitop Mega Plaza, Starbucks Cayma (1236 px), Casa Asia Golf (1024 px). Retratos aprobados de los tres arquitectos (los actuales son referenciales). Hard Rock Café Cusco y Madam Tusan: verificar autorización antes de publicarlos.
+16. **Clientes**: validar relación y permiso de uso de cada nombre y logotipo (`clientsPage` en `content/home.ts`); hoy se muestran solo nombres (sin logos). "Bohemia", "Tomasal" y "Villa Médica" se clasificaron como Inmobiliario por criterio propio.
+17. **PDF de CV de Mariyoli** (`public/docs/`) aún dice "+30 años": actualizar a 28. Falta CV de José y hoja de vida de Renato.
+18. Las directrices piden "área (indicar tipo)" en las fichas: falta saber si los m² son construidos, techados o del terreno. No se muestra el tipo.
+19. Antes de publicar: la clienta pidió un **enlace de prueba para aprobar**; Vercel genera previews en ramas distintas de `main`.

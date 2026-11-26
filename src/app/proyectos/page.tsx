@@ -10,7 +10,7 @@ export const metadata: Metadata = pageMeta({
   title: 'Proyectos de arquitectura',
   path: '/proyectos',
   description:
-    'Portafolio de proyectos de arquitectura retail, corporativa, gastronómica, residencial y educativa de MD&C Arquitectos y Canales Arquitectos.',
+    'Selección de nuestra trayectoria en arquitectura comercial, inmobiliaria, corporativa, residencial e institucional de MD&C Arquitectos y Canales Arquitectos.',
 });
 
 export default function ProyectosPage() {
@@ -24,6 +24,7 @@ export default function ProyectosPage() {
       category: p.category,
       categoryLabel: categoryLabel(p.category),
       thumb: { src: ph.src, blur: ph.blur },
+      studio: p.office ? 'canales' : 'mdc',
     };
   });
 
@@ -33,15 +34,14 @@ export default function ProyectosPage() {
         <div className="shell">
           <p className="label text-stone">03 / Portafolio</p>
           <div className="grid-12 mt-6 items-end gap-y-6">
-            <h1 className="display t-h1 col-span-12 lg:col-span-9">
+            <h1 className="display t-h1 col-span-12 max-w-[18ch] lg:col-span-9">
               <WordReveal as="span" className="block">
-                Proyectos
+                Proyectos que construyen valor.
               </WordReveal>
             </h1>
-            <p className="label text-stone col-span-12 lg:col-span-3 lg:text-right">
-              {String(items.length).padStart(2, '0')} proyectos
-              <br />
-              Retail · Corporativa · Gastronómica
+            <p className="text-stone col-span-12 max-w-[44ch] lg:col-span-3 lg:justify-self-end">
+              Conozca una selección de nuestra trayectoria en arquitectura comercial, inmobiliaria,
+              corporativa, residencial e institucional.
             </p>
           </div>
         </div>

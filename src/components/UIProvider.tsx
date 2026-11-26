@@ -116,7 +116,7 @@ export function UIProvider({ children }: { children: React.ReactNode }) {
         style={{ visibility: 'hidden' }}
       >
         <div data-panel className="bg-ink absolute inset-0 will-change-transform" />
-        <div data-line className="bg-brand absolute top-1/2 left-0 h-px w-full" />
+        <div data-line className="bg-topo absolute top-1/2 left-0 h-px w-full" />
       </div>
     </Ctx.Provider>
   );

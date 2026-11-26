@@ -11,6 +11,6 @@ export default async function Image() {
     title: slogan.replace(/\.$/, ''),
     label: 'MD&C Arquitectos · Lima, Perú',
     photo: heroPhoto('hero/indian-puruchuco')?.src,
-    meta: 'Arquitectura comercial · Retail · Corporativa · Gastronómica',
+    meta: 'Arquitectura comercial · Desarrollo inmobiliario',
   });
 }

@@ -5,7 +5,8 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: site.name,
     short_name: 'MD&C',
-    description: 'Estudio de arquitectura comercial en Lima: retail, corporativa y gastronómica.',
+    description:
+      'Firma de arquitectura, consultoría y construcción en Lima: arquitectura comercial y desarrollo inmobiliario.',
     lang: 'es-PE',
     start_url: '/',
     display: 'standalone',

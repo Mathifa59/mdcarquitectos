@@ -58,10 +58,7 @@ export function Preloader() {
         <div data-pre-logo>
           <Logo tone="onDark" />
         </div>
-        <span
-          data-pre-line
-          className="bg-brand absolute -bottom-5 left-0 h-px w-full origin-left"
-        />
+        <span data-pre-line className="bg-topo absolute -bottom-5 left-0 h-px w-full origin-left" />
       </div>
     </div>
   );

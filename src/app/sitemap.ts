@@ -24,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...services.map((s) => page(`/servicios/${s.slug}`, 0.8)),
     page('/estudio', 0.8),
     ...profileTeam.map((m) => page(`/estudio/${m.slug}`, 0.6)),
+    page('/clientes', 0.7),
     page('/contacto', 0.8, 'yearly'),
     page('/privacidad', 0.3, 'yearly'),
   ];

@@ -31,7 +31,7 @@ export default function Error({
             type="button"
             onClick={reset}
             data-cursor="link"
-            className="label bg-bone text-ink hover:bg-brand hover:text-bone rounded-full px-8 py-5 transition-colors duration-500"
+            className="label bg-bone text-ink hover:bg-graphite hover:text-bone rounded-full px-8 py-5 transition-colors duration-500"
           >
             Reintentar
           </button>

@@ -47,8 +47,8 @@ export async function renderOg({ title, label, photo, meta }: Props) {
         height: '100%',
         display: 'flex',
         position: 'relative',
-        background: '#0E0E0E',
-        color: '#F3F1EC',
+        background: '#191919',
+        color: '#F8F7F4',
         fontFamily: 'Inter Tight',
       }}
     >
@@ -78,8 +78,8 @@ export async function renderOg({ title, label, photo, meta }: Props) {
           height: 630,
           display: 'flex',
           background: bg
-            ? 'linear-gradient(180deg, rgba(14,14,14,0.55) 0%, rgba(14,14,14,0.35) 35%, rgba(14,14,14,0.92) 100%)'
-            : 'radial-gradient(90% 80% at 85% 0%, #2a2927 0%, #0E0E0E 70%)',
+            ? 'linear-gradient(180deg, rgba(25,25,25,0.55) 0%, rgba(25,25,25,0.35) 35%, rgba(25,25,25,0.92) 100%)'
+            : 'radial-gradient(90% 80% at 85% 0%, #2a2927 0%, #191919 70%)',
         }}
       />
       <div
@@ -96,9 +96,9 @@ export async function renderOg({ title, label, photo, meta }: Props) {
           <svg width="190" height="54" viewBox={`0 0 ${logo.w} ${logo.compactH}`}>
             <path d={logo.md} fill="#E01B1B" />
             <path d={logo.amp} fill="#8C8C8C" />
-            <path d={logo.c} fill="#F3F1EC" />
+            <path d={logo.c} fill="#F8F7F4" />
           </svg>
-          <div style={{ display: 'flex', height: 2, width: 120, background: '#990101' }} />
+          <div style={{ display: 'flex', height: 2, width: 120, background: '#8A8177' }} />
         </div>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           {label && (
@@ -152,7 +152,7 @@ export async function renderOg({ title, label, photo, meta }: Props) {
   );
 
   const jpeg = await sharp(Buffer.from(await png.arrayBuffer()))
-    .flatten({ background: '#0E0E0E' })
+    .flatten({ background: '#191919' })
     .jpeg({ quality: 78, mozjpeg: true })
     .toBuffer();
   return new Response(new Uint8Array(jpeg), {

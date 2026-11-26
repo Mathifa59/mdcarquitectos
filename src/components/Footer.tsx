@@ -41,31 +41,37 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="col-span-6 lg:col-span-4">
+          <div className="col-span-12 sm:col-span-6 lg:col-span-4">
             <p className="label text-bone/50 mb-4">Contacto</p>
-            <address className="text-bone/85 space-y-2 not-italic">
+            <address className="text-bone/85 space-y-5 not-italic">
               <p>
                 {site.address.street}
                 <br />
                 {site.address.district}, {site.address.city}, {site.address.country}
-              </p>
-              {/* TODO-CONFIRMAR: correo */}
-              <p>
+                <br />
                 <a href={`mailto:${site.email}`} className="link-draw">
                   {site.email}
                 </a>
               </p>
-              <p>
-                <a
-                  href={whatsappUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-draw inline-flex items-center gap-2"
-                >
-                  <WhatsAppIcon className="size-4" /> {site.whatsapp.display}
-                </a>
-              </p>
-              <p className="flex flex-wrap gap-x-6 gap-y-2 pt-2">
+              {Object.values(site.contacts).map((c) => (
+                <p key={c.email}>
+                  <span className="label text-bone/50 mb-1 block">{c.label}</span>
+                  <a href={`mailto:${c.email}`} className="link-draw">
+                    {c.email}
+                  </a>
+                  <br />
+                  <a
+                    href={whatsappUrl(undefined, c.phone.number)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-cursor="link"
+                    className="link-draw mt-1 inline-flex items-center gap-2"
+                  >
+                    <WhatsAppIcon className="size-4" /> {c.phone.display}
+                  </a>
+                </p>
+              ))}
+              <p className="flex flex-wrap gap-x-6 gap-y-2 pt-1">
                 {site.social.map((s) => (
                   <a
                     key={s.label}

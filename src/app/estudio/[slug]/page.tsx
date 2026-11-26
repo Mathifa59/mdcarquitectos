@@ -128,7 +128,7 @@ export default async function PerfilPage({ params }: { params: Promise<Params> }
                   href={m.cv.href}
                   download
                   data-cursor="link"
-                  className="label bg-ink text-bone hover:bg-brand mt-6 inline-flex w-full items-center justify-between rounded-full px-7 py-5 transition-colors duration-500"
+                  className="label bg-ink text-bone hover:bg-graphite mt-6 inline-flex w-full items-center justify-between rounded-full px-7 py-5 transition-colors duration-500"
                 >
                   {m.cv.label} (PDF) <span aria-hidden="true">↓</span>
                 </a>

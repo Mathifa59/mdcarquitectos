@@ -19,10 +19,12 @@ export function PartnerCard({
   member,
   photo,
   index,
+  compact = false,
 }: {
   member: TeamMember;
   photo?: { src: string; blur: string };
   index: number;
+  compact?: boolean;
 }) {
   const hasProfile = member.bio.length > 0;
 
@@ -53,9 +55,18 @@ export function PartnerCard({
         </RevealImage>
         <div className="mt-6 flex items-start justify-between gap-6">
           <div>
-            <h3 className="display text-[clamp(1.75rem,1.1rem+1.5vw,2.5rem)]">{member.name}</h3>
+            <h3
+              className={`display ${compact ? 'text-[clamp(1.25rem,1.05rem+0.6vw,1.5rem)]' : 'text-[clamp(1.5rem,1.1rem+1.2vw,2.25rem)]'}`}
+            >
+              {member.name}
+            </h3>
             <p className="label text-stone mt-3">{member.role}</p>
             {member.headline && <p className="text-stone mt-2">{member.headline}</p>}
+            {member.summary && !compact && (
+              <p className="text-ink/80 mt-4 max-w-[52ch] text-[0.9375rem] leading-relaxed">
+                {member.summary}
+              </p>
+            )}
           </div>
           {hasProfile && (
             <span

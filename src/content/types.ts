@@ -1,7 +1,7 @@
 /** Modelo de contenido. Todo texto de cara al público se escribe en español (es-PE). */
 
 export type CategorySlug =
-  'retail' | 'corporativa' | 'gastronomica' | 'residencial' | 'educacion' | 'comercial';
+  'retail' | 'inmobiliario' | 'corporativa' | 'residencial' | 'gastronomica' | 'educacion';
 
 export type Category = {
   slug: CategorySlug;
@@ -87,6 +87,8 @@ export type TeamMember = {
   name: string;
   role: string;
   headline?: string;
+  /** Resumen corto para la tarjeta (inicio y /estudio). */
+  summary?: string;
   /** Clave en images.json */
   photo?: string;
   bio: string[];

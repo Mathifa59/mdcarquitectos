@@ -16,7 +16,7 @@ export const organizationLd = () => ({
   image: absoluteUrl('/opengraph-image'),
   slogan: 'Ideas que construyen espacios extraordinarios.',
   description:
-    'Estudio de arquitectura comercial con sede en Lima: retail, corporativa, gastronómica y desarrollo inmobiliario. Presencia en Perú, Colombia, Bolivia y Venezuela.',
+    'Firma de arquitectura, consultoría y construcción con sede en Lima: arquitectura comercial, corporativa, residencial, gastronómica y desarrollo inmobiliario. Presencia en Perú, Colombia, Bolivia y Venezuela.',
   telephone: `+${site.whatsapp.number}`,
   address: {
     '@type': 'PostalAddress',
@@ -51,8 +51,12 @@ export const organizationLd = () => ({
     'Arquitectura comercial',
     'Retail',
     'Arquitectura corporativa',
+    'Arquitectura residencial',
     'Arquitectura gastronómica',
     'Desarrollo inmobiliario',
+    'Urbanismo',
+    'Consultoría y gerencia de proyectos',
+    'Construcción',
   ],
 });
 

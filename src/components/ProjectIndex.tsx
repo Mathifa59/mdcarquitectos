@@ -133,7 +133,7 @@ export function ProjectIndex({
               <span className={`label tabular-nums ${muted}`}>
                 {String(i + 1).padStart(2, '0')}
               </span>
-              <span className="display group-hover:text-brand-bright text-[clamp(1.5rem,1rem+1.8vw,2.75rem)] leading-[1.05] tracking-[-0.03em] transition-colors duration-500">
+              <span className="display group-hover:text-topo text-[clamp(1.5rem,1rem+1.8vw,2.75rem)] leading-[1.05] tracking-[-0.03em] transition-colors duration-500">
                 {p.title}
               </span>
               <span

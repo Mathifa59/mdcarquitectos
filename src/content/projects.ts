@@ -1,6 +1,11 @@
 import { canalesProjects } from './canales';
 import type { Category, Project } from './types';
 
+/**
+ * Categorías del portafolio, en el orden de los filtros (directrices 2026-11-26). Los slugs se conservan
+ * para no romper enlaces antiguos (?categoria=corporativa…); solo cambian las etiquetas.
+ * "Comercial y empresarial" se eliminó y sus proyectos se redistribuyeron por tipología.
+ */
 export const categories: Category[] = [
   {
     slug: 'retail',
@@ -9,24 +14,24 @@ export const categories: Category[] = [
     serviceSlug: 'arquitectura-retail',
   },
   {
+    slug: 'inmobiliario',
+    label: 'Inmobiliario y urbanismo',
+    phrase: 'desarrollo inmobiliario y urbanismo',
+  },
+  {
     slug: 'corporativa',
-    label: 'Corporativa',
+    label: 'Corporativo',
     phrase: 'arquitectura corporativa',
     serviceSlug: 'arquitectura-corporativa',
   },
+  { slug: 'residencial', label: 'Residencial', phrase: 'arquitectura residencial' },
   {
     slug: 'gastronomica',
-    label: 'Gastronómica',
+    label: 'Gastronómico',
     phrase: 'arquitectura gastronómica',
     serviceSlug: 'arquitectura-gastronomica',
   },
-  { slug: 'residencial', label: 'Residencial', phrase: 'arquitectura residencial' },
-  { slug: 'educacion', label: 'Educación', phrase: 'arquitectura educativa' },
-  {
-    slug: 'comercial',
-    label: 'Comercial y empresarial',
-    phrase: 'arquitectura comercial y empresarial',
-  },
+  { slug: 'educacion', label: 'Educativo e institucional', phrase: 'arquitectura educativa e institucional' },
 ];
 
 // Textos de alcance normalizados.
@@ -64,7 +69,7 @@ const mdcProjects: Project[] = [
     year: '2019',
     scope: [IMPL],
     featured: true,
-    order: 2,
+    order: 0, // la clienta lo pidió como primer proyecto de retail (2026-11-26)
   },
   {
     slug: 'oficinas-porta',

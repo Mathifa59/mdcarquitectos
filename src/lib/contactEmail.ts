@@ -2,9 +2,11 @@
 
 type Consulta = {
   nombre: string;
+  empresa?: string;
   email: string;
   telefono?: string;
   tipo?: string;
+  ubicacion?: string;
   mensaje: string;
 };
 
@@ -16,10 +18,10 @@ const esc = (s: string) =>
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
 
-const INK = '#0e0e0e';
-const BONE = '#f3f1ec';
-const BRAND = '#990101';
-const STONE = '#5f5f5f';
+const INK = '#191919';
+const BONE = '#f8f7f4';
+const BRAND = '#4b4b4b';
+const STONE = '#4b4b4b';
 const FONT = "'Helvetica Neue',Helvetica,Arial,sans-serif";
 
 function row(label: string, value: string) {
@@ -39,6 +41,7 @@ export function consultaHtml(d: Consulta, siteUrl: string, siteName: string) {
 
   const filas = [
     row('Nombre', nombre),
+    row('Empresa', d.empresa ? esc(d.empresa) : '—'),
     row(
       'Correo',
       `<a href="mailto:${email}" style="color:${BRAND};text-decoration:none">${email}</a>`,
@@ -50,6 +53,7 @@ export function consultaHtml(d: Consulta, siteUrl: string, siteName: string) {
         : '—',
     ),
     row('Proyecto', d.tipo ? esc(d.tipo) : '—'),
+    row('Ubicación', d.ubicacion ? esc(d.ubicacion) : '—'),
   ].join('');
 
   return `<!doctype html>

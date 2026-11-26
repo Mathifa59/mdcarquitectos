@@ -21,3 +21,18 @@ export function joinList(items: string[]): string {
 const keepCase = (s: string) => s.startsWith('Look');
 /** Primera letra en minúscula para usar un término en medio de una frase. */
 export const lowerFirst = (s: string) => (keepCase(s) ? s : s.charAt(0).toLowerCase() + s.slice(1));
+
+/** "Retail · Lima · 2019 · 500 m²": etiqueta, ciudad (último tramo de la ubicación), año y área. */
+export function projectMeta(
+  p: { location?: string; year?: string; areaM2?: number },
+  label: string,
+): string {
+  return [
+    label,
+    p.location?.split(', ').pop(),
+    p.year,
+    p.areaM2 ? `${formatArea(p.areaM2)} m²` : undefined,
+  ]
+    .filter(Boolean)
+    .join(' · ');
+}

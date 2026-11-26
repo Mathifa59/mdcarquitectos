@@ -37,7 +37,7 @@ export default function NotFound() {
       <div className="shell relative z-10 pt-[calc(var(--header-h)+4rem)] pb-[clamp(3rem,7vw,6rem)]">
         <p className="label text-bone/70 mb-6">Error 404</p>
         <h1 className="display text-bone text-[clamp(7rem,2rem+28vw,26rem)] leading-[0.8]">
-          4<span className="text-brand-bright">0</span>4
+          4<span className="text-topo">0</span>4
         </h1>
         <p className="t-lead mt-10 max-w-[28ch]">Esta página no existe o ha cambiado de lugar.</p>
 
@@ -45,7 +45,7 @@ export default function NotFound() {
           <TransitionLink
             href="/"
             data-cursor="link"
-            className="label group bg-bone text-ink hover:bg-brand hover:text-bone inline-flex items-center gap-4 rounded-full px-8 py-5 transition-colors duration-500"
+            className="label group bg-bone text-ink hover:bg-graphite hover:text-bone inline-flex items-center gap-4 rounded-full px-8 py-5 transition-colors duration-500"
           >
             Volver al inicio <span aria-hidden="true">→</span>
           </TransitionLink>

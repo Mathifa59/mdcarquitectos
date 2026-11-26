@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import { Suspense } from 'react';
 import { ContactForm } from '@/components/contact/ContactForm';
 import { PageHero } from '@/components/PageHero';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
@@ -11,7 +12,7 @@ export const metadata: Metadata = pageMeta({
   title: 'Contacto',
   path: '/contacto',
   description:
-    'Cuéntenos su proyecto: escríbanos por el formulario o por WhatsApp (+51 986 622 055). Estudio en Santiago de Surco, Lima.',
+    'Cuéntenos sus objetivos: una nueva tienda, una sede corporativa o una inversión inmobiliaria. Escríbanos por el formulario, correo o WhatsApp. Estudio en Santiago de Surco, Lima.',
 });
 
 const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${site.address.geo.lat},${site.address.geo.lon}`;
@@ -23,7 +24,8 @@ export default function ContactoPage() {
     <>
       <PageHero
         label="04 / Contacto"
-        title="Hablemos de su proyecto"
+        title="Hablemos de su proyecto."
+        lead="Ya sea una nueva tienda, una sede corporativa o una inversión inmobiliaria, cuéntenos sus objetivos. Le ayudaremos a identificar el alcance y los siguientes pasos."
         image={{
           src: hero.src,
           blur: hero.blur,
@@ -35,48 +37,51 @@ export default function ContactoPage() {
         <div className="shell grid-12 gap-y-16">
           <div className="col-span-12 lg:col-span-7">
             <p className="label text-stone mb-10">Escríbanos</p>
-            <ContactForm />
+            <Suspense fallback={<div className="min-h-[30rem]" />}>
+              <ContactForm />
+            </Suspense>
           </div>
 
           <aside
             className="col-span-12 lg:col-span-4 lg:col-start-9"
             aria-label="Datos de contacto"
           >
-            <a
-              href={whatsappUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-cursor="link"
-              className="group bg-ink text-bone hover:bg-brand flex items-center justify-between gap-4 rounded-full px-8 py-6 transition-colors duration-500"
-            >
-              <span className="label inline-flex items-center gap-3">
-                <WhatsAppIcon className="size-5" /> WhatsApp
-              </span>
-              <span className="text-[0.95rem] whitespace-nowrap">{site.whatsapp.display}</span>
-            </a>
-
-            <dl className="mt-10 space-y-8">
+            <dl className="space-y-8">
               <div className="border-ink/15 border-t pt-5">
-                <dt className="label text-stone">Estudio</dt>
+                <dt className="label text-stone">Correo general</dt>
                 <dd className="mt-2">
-                  {/* TODO-CONFIRMAR: dirección referencial */}
-                  {site.address.street}
-                  <br />
-                  {site.address.district}, {site.address.city}, {site.address.country}
-                </dd>
-              </div>
-              <div className="border-ink/15 border-t pt-5">
-                <dt className="label text-stone">Correo</dt>
-                <dd className="mt-2">
-                  {/* TODO-CONFIRMAR: correo */}
                   <a href={`mailto:${site.email}`} className="link-draw">
                     {site.email}
                   </a>
                 </dd>
               </div>
+              {Object.values(site.contacts).map((c) => (
+                <div key={c.email} className="border-ink/15 border-t pt-5">
+                  <dt className="label text-stone">{c.label}</dt>
+                  <dd className="mt-2 space-y-1">
+                    <a href={`mailto:${c.email}`} className="link-draw block w-fit">
+                      {c.email}
+                    </a>
+                    <a
+                      href={whatsappUrl(undefined, c.phone.number)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-cursor="link"
+                      className="link-draw inline-flex items-center gap-2"
+                    >
+                      <WhatsAppIcon className="size-4" /> {c.phone.display}
+                    </a>
+                  </dd>
+                </div>
+              ))}
               <div className="border-ink/15 border-t pt-5">
-                <dt className="label text-stone">Presencia</dt>
-                <dd className="mt-2">{site.countries.join(' · ')}</dd>
+                <dt className="label text-stone">Oficina</dt>
+                <dd className="mt-2">
+                  {/* TODO-CONFIRMAR: vigencia de la dirección */}
+                  {site.address.street}
+                  <br />
+                  {site.address.district}, {site.address.city}, {site.address.country}
+                </dd>
               </div>
             </dl>
 
