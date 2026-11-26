@@ -2,7 +2,7 @@
 
 Sitio institucional de **MD&C Arquitectos** (Medios de Diseño y Construcción S.A.C.), Lima. Next.js (App Router) + TypeScript + Tailwind v4 + GSAP/Lenis. Dominio: `https://www.mdc-arquitectos.com`. Idioma: español (`es-PE`). Desarrollo por devhorses (crédito en el footer).
 
-## Estado (2026-11-25)
+## Estado (2026-11-26)
 **El sitio está en producción** y el formulario de contacto funciona de punta a punta. Fases 0–6 completas (auditoría, base, imágenes y contenido, home, proyectos, estudio/servicios/contacto, pulido SEO/OG/404/redirecciones/rendimiento). Lighthouse móvil: Accesibilidad/Buenas prácticas/SEO 100, Rendimiento 85–100.
 
 Hecho después de la fase 6:
@@ -15,11 +15,17 @@ Hecho después de la fase 6:
 - **Equipo**: 3 arquitectos en `/estudio` (Mariyoli, José, Renato Canales Delgado). Renato es "Arquitecto asociado" con tarjeta sin perfil porque aún no hay biografía; al llenar `bio` en `team.ts` se crea su perfil (`profileTeam`), y si añades `cv` aparece el botón.
 - **UI**: titular del hero limitado por alto (`.t-h1-hero`, laptops), botón de WhatsApp claro (visible sobre fondo oscuro, rojo al hover), footer con "Volver arriba" sin chocar con WhatsApp y menos espacio sobre él, seguimiento del cursor 0,25 s.
 
-Cambios pedidos por la clienta (2026-11-26):
-- **Portada**: fotos nuevas (Indian Puruchuco, Porta, Indian Santa Anita, Explorer) generadas con `node scripts/build-hero.mjs` (no necesita `.raw/`; escribe `public/images/hero/` y las claves `hero/*` de `images.json`) y listadas en `heroSlides` de `src/app/page.tsx`. La imagen OG de inicio usa `hero/indian-puruchuco`.
-- **Tipografía** más chica: escala `--text-h1/h2/h3` en `globals.css` y los titulares con `clamp` propio (Closing, NextProject, MenuOverlay, ProjectFacts, ProjectHero).
-- **Logo**: "&" más grande y de trazo fino (glifo de Inter Tight 200 convertido a trazado), `C` desplazada y viewBox nuevo en `logo-paths.json` (`compactH` = alto sin "ARQUITECTOS"); logo del header más grande.
-- **Textos**: el lead de "Quiénes somos" presenta la firma como fusión de dos empresas; el perfil de Mariyoli muestra solo "Proyectos Retail" (`projectsTitle` + `projectCategories` en `team.ts`).
+Cambios pedidos por la clienta (2026-11-26), ya en producción:
+- **Portada**: 4 fotos rotativas (Indian Puruchuco, Porta Freedom, Indian Santa Anita, Explorer) generadas con `node scripts/build-hero.mjs` (no necesita `.raw/`; reescala a 2000 px desde `public/images/projects`, escribe `public/images/hero/` y las claves `hero/*` de `images.json`) y listadas en `heroSlides` de `src/app/page.tsx`. La imagen OG de inicio usa `hero/indian-puruchuco`. Las fotos de origen miden ~1200 px: se ven algo suaves a pantalla completa; sustituir por originales mayores cuando existan.
+- **Tipografía** más chica: escala `--text-h1/h2/h3` en `globals.css` y titulares con `clamp` propio (Closing, NextProject, MenuOverlay, ProjectFacts, ProjectHero); titular del hero a `10.5svh`.
+- **Logo**: "&" más grande y de trazo fino (glifo de Inter Tight 200 convertido a trazado), `C` desplazada y viewBox nuevo en `logo-paths.json` (`compactH` = alto sin "ARQUITECTOS"); logo del header más grande (`w-[7rem] sm:w-[9.5rem]`). El logo original está en el historial de git.
+- **Textos**: el lead de "Quiénes somos" (`about.lead`) presenta la firma como fusión de dos empresas; en el inicio, tras ese lead, van dos párrafos sobre la empresa (`about.paragraphs[2]` y `[3]`) en `home/Intro.tsx`.
+- **Proyectos por estudio**: los perfiles listan los proyectos de su estudio (`projectsBy` en `team.ts`): Mariyoli → "Proyectos de MD&C" (sin `office`), José → "Proyectos de Canales Arquitectos" (con `office`).
+- **Orden del portafolio** (`sortedProjects` en `projects.ts`): primero MD&C y luego Canales; por categoría y con las marcas juntas (Topitop, Indian, Marathon, Andean, Porta…), usando `order` solo para decidir qué va primero. La clienta encontraba confuso el retail disperso.
+- **Fotos**: se retiraron las 110 fotos de menos de 1000 px de ancho (de 215), dejando como mínimo una por proyecto (si todas eran pequeñas se conservó la mayor). Se añadieron 3 fotos de Andean (fachadas y local, <1000 px) al proyecto Mall Aventura Plaza y la foto de Topitop Mall del Sur (770 px) que la clienta pidió incluir. Los nuevos retratos/fotos pequeñas llevan `tier: 'mid'` a mano en `images.json`.
+- **Destacados del inicio** (`featured`): Topitop Mega Plaza, Indian Puruchuco, Starbucks Cayma, Marathon Mega Plaza, Kuna, Banco Ripley, H.Stern, Topitop Mall del Sur, Andean Mall Aventura, Porta Freedom y Explorer (se quitó Oficinas Porta).
+- **Redes**: Instagram, Facebook y LinkedIn en `site.social` (footer y `sameAs` del JSON-LD de `seo.ts`).
+- **Validador**: `scripts/validate-content.mjs` ignora las claves `hero/`; sigue marcando "equipo excluido publicado" (pendiente de revisar con la lista local de exclusiones, probablemente por Renato).
 
 ## Cómo arrancar
 ```bash
@@ -54,6 +60,11 @@ npm run dev
 6. Discrepancias de datos entre los documentos de Canales Arquitectos (áreas/años) y 11 proyectos más sin fotos asociables.
 7. Cargo y CV en PDF de José Canales; redes sociales reales; nombre oficial de la universidad de Mariyoli.
 8. **Tipografía anterior**: el usuario mencionó una carpeta con las fuentes del sitio anterior (no encontrada: no está en el proyecto, OneDrive, Descargas ni git). El sitio usa hoy Inter Tight + Instrument Serif (Google Fonts, `layout.tsx`). El sitio viejo (`agenciamk.info/lab/proyectos/mdc-arquitectos`) cargaba "MK Hero"/"Open Sans", probablemente de la plantilla de la agencia. Pendiente: ubicar la carpeta y decidir si se usa (comprobar licencia web).
+
+9. **Hoja de vida de Renato** (la clienta la enviará): crear su perfil con `bio`, cargo y `cv`.
+10. **Edificio con letrero "Ferrini"** (foto enviada el 2026-11-26): falta saber a qué proyecto pertenece; no está publicado.
+11. Foto Denim de Topitop enviada sin nombre (no usada); fotos reales de Explorer (hoy es una recreación 3D) y originales de mayor resolución para portada y Andean.
+12. Preguntar a la clienta si en `/proyectos` quiere dos encabezados separados ("MD&C" y "Canales Arquitectos") o solo retail en el perfil de Mariyoli.
 
 ## Archivos locales que NO están en el repo (a propósito)
 `.raw/` (materiales fuente), `docs/` (notas internas de auditoría), `.env.local` (claves), `.claude/` (configuración local). Si trabajas en otro equipo y necesitas regenerar imágenes, copia la carpeta de originales (se sincroniza por OneDrive) y define `CURATED_DIR` si usas la selección curada. Las variables de producción viven en Vercel, no en el repo.
