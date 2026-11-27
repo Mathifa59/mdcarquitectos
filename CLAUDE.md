@@ -13,6 +13,7 @@ Sitio institucional de **MD&C Arquitectos** (Medios de Diseño y Construcción S
 - **Contacto**: formulario con empresa, ubicación y consentimiento de privacidad obligatorio; correo HTML enruta por área (CC a `mariyolidelgado@` para Retail/Corporativo/Gastronómico y a `josecanales@` para Inmobiliario/Residencial/Educativo). Pie con WhatsApp por área (`site.contacts`).
 - **Cifras**: Mariyoli = **28 años**; las cifras globales (+30 años, +80 proyectos, m², marcas) están **ocultas** hasta validarlas (la clienta lo pide en las directrices). No sumar años de ambas empresas.
 - **SEO**: título de inicio "MD&C Arquitectos | Arquitectura comercial y desarrollo inmobiliario en Lima"; `/clientes` en el sitemap.
+- **Página `/enlaces` y QR** (2026-11-27): página estilo Linktree (`src/app/enlaces/page.tsx`) con sitio web, redes (`site.social`), WhatsApp por área (`site.contacts`) y correo, con iconos de trazo; se muestra a pantalla completa (`fixed inset-0 z-[200]`) sobre el cabezal y el pie, y **no se indexa ni está en el sitemap**. El QR apunta a `https://www.mdc-arquitectos.com/enlaces` (nivel de corrección H, #191919 sobre blanco), así que cambiar enlaces no obliga a reimprimirlo. Archivos `qr-mdc-enlaces.png` (2000 px) y `.svg` en la carpeta local `qr/` (no versionada); se generan con el paquete `qrcode` (no es dependencia del proyecto): `QR.toFile(salida, url, { errorCorrectionLevel: 'H', margin: 4, color: { dark: '#191919', light: '#ffffff' } })`.
 - Se eliminaron los componentes antiguos del inicio (Hero rotativo, Intro, ServicesSection, Stats, FeaturedStrip, MariyoliBlock).
 
 Lo siguiente describe el estado previo al rediseño (se conserva como referencia):
@@ -52,7 +53,7 @@ npm run dev
 ## Mapa del código
 - `src/content/` es la fuente de verdad (editar aquí): `site.ts` (WhatsApp, dirección, correo, cifras), `projects.ts` + `canales.ts` (64 proyectos), `services.ts`, `team.ts`, `studio.ts`, `brands.ts`. `images.json` y `redirects.ts` son **generados**.
 - `src/components/` UI y animaciones (`Cursor`, `Footer`, `WhatsAppButton`, `contact/`, `studio/PartnerCard`); `src/lib/` GSAP, Lenis, SEO (`seo.ts`), OG (`og.tsx`), correo (`contactEmail.ts`), galería, formato.
-- `src/app/`: `/`, `/estudio` (+`/[slug]`), `/servicios`, `/proyectos`, `/contacto`, `/privacidad`, sitemap, robots, manifest, OG.
+- `src/app/`: `/`, `/estudio` (+`/[slug]`), `/servicios`, `/proyectos`, `/clientes`, `/contacto`, `/privacidad`, `/enlaces` (QR), sitemap, robots, manifest, OG.
 - `scripts/`: `optimize-images.mjs` (necesita las fotos originales, que **no** están en el repo), `build-icons.mjs`, `build-map.mjs`, `build-redirects.mjs`, `vectorize-logo.mjs`, `validate-content.mjs`.
 
 ## Reglas del proyecto
@@ -80,7 +81,7 @@ npm run dev
 12. Preguntar a la clienta si en `/proyectos` quiere dos encabezados separados ("MD&C" y "Canales Arquitectos") o solo retail en el perfil de Mariyoli.
 
 ## Archivos locales que NO están en el repo (a propósito)
-`.raw/` (materiales fuente), `docs/` (notas internas de auditoría), `.env.local` (claves), `.claude/` (configuración local). Si trabajas en otro equipo y necesitas regenerar imágenes, copia la carpeta de originales (se sincroniza por OneDrive) y define `CURATED_DIR` si usas la selección curada. Las variables de producción viven en Vercel, no en el repo.
+`.raw/` (materiales fuente), `docs/` (notas internas de auditoría), `qr/` (QR de /enlaces en PNG y SVG), `.env.local` (claves), `.claude/` (configuración local). Si trabajas en otro equipo y necesitas regenerar imágenes, copia la carpeta de originales (se sincroniza por OneDrive) y define `CURATED_DIR` si usas la selección curada. Las variables de producción viven en Vercel, no en el repo.
 
 ## Pendientes del rediseño (2026-11-26)
 13. **`josecanales@mdc-arquitectos.com`** está publicado pero no existe: crear reenviador en Yachay (Email Forwarders) o los correos de consultas inmobiliarias rebotarán.
