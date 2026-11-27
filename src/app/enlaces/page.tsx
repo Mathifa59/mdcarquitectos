@@ -92,9 +92,10 @@ export default function EnlacesPage() {
   return (
     <div
       data-theme="dark"
+      data-enlaces
       className="bg-ink text-bone fixed inset-0 z-[200] overflow-y-auto overscroll-contain"
     >
-      <main className="mx-auto flex min-h-full w-full max-w-md flex-col items-center px-6 py-12 sm:py-16">
+      <div className="mx-auto flex min-h-full w-full max-w-md flex-col items-center px-6 py-12 sm:py-16">
         <div className="w-40">
           <Logo tone="onDark" />
         </div>
@@ -131,7 +132,7 @@ export default function EnlacesPage() {
         <p className="text-bone/45 mt-auto pt-12 text-center text-[0.75rem]">
           © {new Date().getFullYear()} {site.legalName}
         </p>
-      </main>
+      </div>
     </div>
   );
 }

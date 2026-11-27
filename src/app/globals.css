@@ -90,6 +90,12 @@ button[role='combobox']:focus-visible {
   outline-color: var(--color-bone);
 }
 
+/* /enlaces se muestra a pantalla completa sobre el sitio: se oculta el scroll de la página de fondo
+   para que solo quede una barra de desplazamiento. */
+html:has([data-enlaces]) {
+  overflow: hidden;
+}
+
 /* Contenedor con grilla de 12 columnas */
 .shell {
   width: 100%;
